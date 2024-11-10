@@ -31,6 +31,7 @@ namespace chzzkbangonallramTEST
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,12 +42,8 @@ namespace chzzkbangonallramTEST
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +60,19 @@ namespace chzzkbangonallramTEST
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.button3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.제1목없음;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("굴림", 20F);
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(357, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(32, 31);
+            this.button3.TabIndex = 3;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -170,42 +180,10 @@ namespace chzzkbangonallramTEST
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button5);
-            this.panel3.Controls.Add(this.vScrollBar1);
             this.panel3.Location = new System.Drawing.Point(-3, 174);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(483, 518);
             this.panel3.TabIndex = 7;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.button3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.제1목없음;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("굴림", 20F);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(357, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(32, 31);
-            this.button3.TabIndex = 3;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(419, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(63, 374);
-            this.vScrollBar1.TabIndex = 0;
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("CookieRun Bold", 23F);
-            this.button5.Location = new System.Drawing.Point(181, 425);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(171, 51);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "++++++++++";
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -228,7 +206,6 @@ namespace chzzkbangonallramTEST
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -250,8 +227,6 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private System.Windows.Forms.Button button5;
     }
 }
 
