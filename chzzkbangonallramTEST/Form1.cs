@@ -14,6 +14,7 @@ using WMPLib;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
+using System.Drawing.Drawing2D;
 
 namespace chzzkbangonallramTEST
 {
@@ -31,6 +32,8 @@ namespace chzzkbangonallramTEST
         private string JsonDirectory = "";
         private string JsonfileDirectory = "";
         private JObject jsonData;
+        private int thispage = 1;
+        private int mexpage;
         public int stremerid { get; set; }
 
         public Form1()
@@ -50,7 +53,7 @@ namespace chzzkbangonallramTEST
 
 
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             button1.FlatStyle = FlatStyle.Flat;
             button1.FlatAppearance.BorderSize = 0;
@@ -62,7 +65,12 @@ namespace chzzkbangonallramTEST
             JsonfileDirectory = JsonDirectory + @"\stremerlist.json";
             string jsondata = File.ReadAllText(JsonfileDirectory);
             jsonData = JObject.Parse(jsondata);
-
+            button5.FlatStyle = FlatStyle.Flat;
+            button5.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.FlatAppearance.BorderSize = 0;
+            update_labe();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -92,10 +100,7 @@ namespace chzzkbangonallramTEST
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://discord.gg/h7vWQR9VH4");
-        }
+
 
         private void label1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -259,21 +264,101 @@ namespace chzzkbangonallramTEST
         }
 
 
-        
+        public string GetUserName(int pageNumber, int userIndex)
+        {
+            // pageforstremersname 리스트에서 해당 페이지 번호를 찾아 출력
+            if (pageforstremersname.Count >= pageNumber && pageNumber > 0)
+            {
+                // 해당 페이지 데이터 가져오기 (예: "Page 1: {user1, user2, user3}")
+                string pageData = pageforstremersname[pageNumber - 1];
 
+                // 페이지 데이터에서 유저 리스트 부분만 추출 (예: "user1, user2, user3")
+                int startIndex = pageData.IndexOf("{") + 1;
+                int endIndex = pageData.IndexOf("}");
+
+                if (startIndex >= 0 && endIndex >= 0)
+                {
+                    string userList = pageData.Substring(startIndex, endIndex - startIndex); // "user1, user2, user3"
+
+                    // 유저 리스트에서 유저 이름을 쉼표로 구분하여 배열로 분리
+                    string[] users = userList.Split(','); // ["user1", "user2", "user3"]
+
+                    // 유저 번호가 배열 범위 내에 있는지 확인
+                    if (userIndex >= 0 && userIndex < users.Length)
+                    {
+                        // 유저 이름을 반환 (앞뒤 공백 제거)
+                        return users[userIndex].Trim();
+                    }
+                    else
+                    {
+                        //printerror($"페이지 {pageNumber}에 유효한 유저가 없습니다.");
+                        //printerror(pageData);
+                        return null;
+                    }
+                }
+                else
+                {
+                    //printerror($"페이지 {pageNumber} 데이터 형식에 오류가 있습니다.");
+                    //printerror(pageData);
+                    return null;
+                }
+            }
+            else
+            {
+                //printerror($"페이지 {pageNumber}가 존재하지 않습니다.");
+                return null;
+            }
+        }
+
+        public List<string> openlivestremername = new List<string>();
+        public List<string> pageforstremersname = new List<string>(); // 페이지별 스트리머 이름을 저장할 리스트
 
         private void update_labe()
         {
+            // JSON 데이터에서 "users" 항목을 추출
             JArray usersArray = (JArray)jsonData["users"];
+
+            // openlivestremername 리스트를 초기화 (중복 방지)
+            openlivestremername.Clear(); // 이전 데이터 초기화
+
+            // "openlive"가 true인 사용자들의 channelName을 openlivestremername에 추가
             for (int i = 0; i < usersArray.Count; i++)
             {
-                Print(usersArray[i]["openlive"].ToString());
-                if (usersArray[i]["openlive"].Equals("true"))
+                if (usersArray[i]["openlive"].ToString().Equals("True", StringComparison.OrdinalIgnoreCase))
                 {
-                    Print(usersArray[i]["channelName"].ToString());
+                    openlivestremername.Add(usersArray[i]["channelName"].ToString());
                 }
             }
+
+            // 페이지 나누기
+            int pageSize = 3; // 한 페이지에 들어갈 사용자 수
+            int totalUsers = openlivestremername.Count;
+            int totalPages = (totalUsers + pageSize - 1) / pageSize; // 페이지 수 계산
+            mexpage = totalPages;
+
+            // pageforstremersname 리스트 초기화 (새로운 페이지 정보로 갱신)
+            pageforstremersname.Clear();
+
+            // 페이지별로 스트리머 이름 나누기
+            for (int page = 0; page < totalPages; page++)
+            {
+                List<string> pageUsers = new List<string>(); // 현재 페이지의 사용자 리스트
+                for (int i = page * pageSize; i < (page + 1) * pageSize && i < totalUsers; i++)
+                {
+                    pageUsers.Add(openlivestremername[i]);
+                }
+
+                // 페이지 정보를 string으로 만들어 리스트에 저장
+                pageforstremersname.Add($"Page {page + 1}: {{{string.Join(", ", pageUsers)}}}");
+            }
+
+            // 페이지 1에서 유저 이름을 올바르게 설정
+            stremer_name_label1.Text = GetUserName(thispage, 0); // 첫 번째 유저
+            stremer_name_label2.Text = GetUserName(thispage, 1); // 두 번째 유저
+            stremer_name_label3.Text = GetUserName(thispage, 2); // 세 번째 유저
         }
+
+
 
 
 
@@ -489,6 +574,36 @@ namespace chzzkbangonallramTEST
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            update_labe();
+        }
+
+        private void label1_Click(object sender, MouseEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://discord.gg/h7vWQR9VH4");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (thispage <= mexpage-1)
+            {
+                thispage++;
+                label3.Text = thispage.ToString();
+                update_labe();
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (thispage >= 2)
+            {
+                thispage--;
+                label3.Text = thispage.ToString();
+                update_labe();
+            }
         }
     }
 }

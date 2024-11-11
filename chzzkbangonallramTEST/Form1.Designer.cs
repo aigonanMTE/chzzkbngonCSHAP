@@ -42,6 +42,7 @@ namespace chzzkbangonallramTEST
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.del_button1 = new System.Windows.Forms.Button();
             this.del_button2 = new System.Windows.Forms.Button();
             this.del_button3 = new System.Windows.Forms.Button();
@@ -100,7 +101,7 @@ namespace chzzkbangonallramTEST
             this.label1.Size = new System.Drawing.Size(204, 37);
             this.label1.TabIndex = 1;
             this.label1.Text = "치지직 뱅온 알람";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.label1_Click);
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
             this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
             // 
@@ -197,6 +198,7 @@ namespace chzzkbangonallramTEST
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.del_button1);
             this.panel3.Controls.Add(this.del_button2);
             this.panel3.Controls.Add(this.del_button3);
@@ -216,6 +218,17 @@ namespace chzzkbangonallramTEST
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(483, 518);
             this.panel3.TabIndex = 7;
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.button7.Location = new System.Drawing.Point(346, 473);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(123, 45);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "디버깅";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // del_button1
             // 
@@ -355,6 +368,7 @@ namespace chzzkbangonallramTEST
             this.button6.TabIndex = 5;
             this.button6.Text = "<";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -368,6 +382,7 @@ namespace chzzkbangonallramTEST
             this.button5.TabIndex = 4;
             this.button5.Text = ">";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label3
             // 
@@ -439,6 +454,7 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Button del_button1;
         private System.Windows.Forms.Button del_button2;
         private System.Windows.Forms.Button del_button3;
+        private System.Windows.Forms.Button button7;
     }
 }
 

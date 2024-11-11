@@ -3,16 +3,16 @@
     {
       "stremerid": 1,
       "channelName": "소니쇼",
-      "openlive": false,
-      "followerCount": 83632,
-      "livetitle": "not streming",
+      "openlive": true,
+      "followerCount": 83678,
+      "livetitle": "전국주술사협회 (현재 70) ٩( ᐛ )و",
       "channlid": "cd04c50c6ff488ac96f8900e26e5b993"
     },
     {
       "stremerid": 2,
       "channelName": "햇살살",
       "openlive": false,
-      "followerCount": 28464,
+      "followerCount": 28506,
       "livetitle": "not streming",
       "channlid": "2c3d33db0543d96700ec6d1ad83090a2"
     },
@@ -20,16 +20,25 @@
       "stremerid": 3,
       "channelName": "풍월량",
       "openlive": true,
-      "followerCount": 208767,
-      "livetitle": "풍월량",
+      "followerCount": 208867,
+      "livetitle": "당직근무서는 공포게임 ",
       "channlid": "7ce8032370ac5121dcabce7bad375ced"
+    },
+    {
+      "stremerid": 4,
+      "channelName": "배돈",
+      "openlive": true,
+      "followerCount": 39497,
+      "livetitle": "바람의나라 :메 3일차 ",
+      "channlid": "554e99695decc451d57788b1fd5d5c07"
+    },
+    {
+      "stremerid": 5,
+      "channelName": "삐부",
+      "openlive": true,
+      "followerCount": 74216,
+      "livetitle": "11월11일 힐캠 고민상담소 오픈! ㅇㅅㅇ",
+      "channlid": "5f44570b82fb82d4814ef9502cf6401a"
     }
   ]
 }
-
-
-
-
-
-
-
