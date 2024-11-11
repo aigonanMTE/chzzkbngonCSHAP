@@ -13,13 +13,14 @@ using Newtonsoft.Json;  // JSON 파싱을 위한 라이브러리 추가
 using WMPLib;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
 
 namespace chzzkbangonallramTEST
 {
+
+
     public partial class Form1 : Form
     {
-        private NotifyIcon trayIcon;  // 클래스 수준에서 trayIcon을 선언합니다.
-        private ContextMenuStrip trayMenu;
 
         // Assuming targetURL is defined as follows:
         private string targetURL = "notset"; // Replace with your actual URL
@@ -30,13 +31,26 @@ namespace chzzkbangonallramTEST
         private string JsonDirectory = "";
         private string JsonfileDirectory = "";
         private JObject jsonData;
+        public int stremerid { get; set; }
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Print(string message)
+        {
+            MessageBox.Show($"{message}", "디버깅", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void printerror(string message)
+        {
+            MessageBox.Show($"{message}", "디버깅", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
+
+        private async void Form1_Load(object sender, EventArgs e)
         {
             button1.FlatStyle = FlatStyle.Flat;
             button1.FlatAppearance.BorderSize = 0;
@@ -48,6 +62,7 @@ namespace chzzkbangonallramTEST
             JsonfileDirectory = JsonDirectory + @"\stremerlist.json";
             string jsondata = File.ReadAllText(JsonfileDirectory);
             jsonData = JObject.Parse(jsondata);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,7 +94,7 @@ namespace chzzkbangonallramTEST
 
         private void label1_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/iwantmunsang/chzzkbangonpy");
+            System.Diagnostics.Process.Start("https://discord.gg/h7vWQR9VH4");
         }
 
         private void label1_MouseDown(object sender, MouseEventArgs e)
@@ -136,31 +151,51 @@ namespace chzzkbangonallramTEST
         }
 
 
+
+
         public bool api_get_runing = false;
 
         public async Task api_get()
         {
             api_get_runing = true;
-            JArray usersArray = (JArray)jsonData["users"];
+            // JSON 데이터를 파일에서 읽음
+            string jsonContent = File.ReadAllText(JsonfileDirectory);
+
+            // JSON 데이터를 JObject로 파싱
+            JObject data1 = string.IsNullOrWhiteSpace(jsonContent) ? new JObject() : JObject.Parse(jsonContent);
+
+            // users 배열 가져오기
+            JArray usersArray = (JArray)data1["users"];
 
             for (int i = 0; i < usersArray.Count; i++)
             {
-                string Targetid = usersArray[i]["channlid"].ToString(); // "channlid" 값 추출
-
+                string Targetid = usersArray[i]["channlid"].ToString();
                 targetURL = "https://api.chzzk.naver.com/service/v1/channels/" + Targetid;
                 api_get_runing = true;
                 string result = string.Empty;
+                usersArray = (JArray)data1["users"];
                 try
                 {
                     WebClient client = new WebClient();
 
                     // Add specific headers
-                    client.Headers.Add("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 12.4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.6335.223 Safari/537.36");
-                    client.Headers.Add("Accept-Language", "ko-KR,ko;q=0.9,en");
-                    client.Headers.Add("Accept-Encoding", "gzip, deflate, br");
-                    client.Headers.Add("Referer", "https://www.google.com/");
+                    client.Headers.Add("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 13.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.6286.210 Safari/537.36");
+                    client.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+                    client.Headers.Add("Accept-Encoding", "gzip, deflate, br, zstd");
+                    client.Headers.Add("Accept-Language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6");
+                    client.Headers.Add("Cache-Control", "max-age=0");
+                    client.Headers.Add("Cookie", "NNB=5Z6ILX3ZKMLGO; nid_inf=490044677; NID_AUT=rFmati7co9izzzJzdUlQQurkpqn3DReAtXKyDo8MSPUrfuHeV6eEBP6xri5Mb6FY; NID_JKL=LChhy6zSGaeMi+xf/3QLtuuBUgNo0t7wUo2by5VgLmk=; loungesRecentlyVisited=chzzk; recentKeyword=%5B%5D; recentKeywordInLounge=%5B%5D; BUC=68tGDuP97gonv2Tan7GEzoTZFHI5s5Gxnt6KlEDxh8o=; NID_SES=AAABn8SBvwzaqNRgW7++R1Qy/MoVUI2vJDCdVN4TKXzn4wF7/qupemhbWQoUAw3dGNx+GF4pJeRgAz/4FUewe7a5DZSFkWKjMpkk5Hc0Z1LynDBAXWK/v9fkUNk8ze4JLAnqVHGhHZdoGbO5/Mw12naoe9PvARw96FgyjoM9YwMKC5N/HQ/aViVAzIWx8uJJJJOEoAeDsX7ZNNt4lKtwKKZxKTXyIBiBX7jRN8WqK9Ur+4QG3Oq+QFAlsO5giGJD9P42HCDKUBGGBqYzrLurahQ7Q0W+iLfj0C63UGwiVNT0LCxa9EMzSKYRyNPI//21GRM2DGlbNpxCYFA9zOGVf32PYpJ/WaoKOwvzcw6DKrTwuU8+CCfKxp+vVGrImzFHz9dHCayPnXCB3TZDVzhWjcqq6/mbqXCslobMPoUYBJ+Mx5BDbp2C6a8fjXCpgFkBFris6AnM6DGlgP8IpG0dToZZg+3tptfsu1rOjqusBp7YaYB/HfRfLJsepTlcMI3fvjV9NeDybotgWbdRuOxn4jIzX7kQn5NNl0mX6qi9B8YE8L2X; ba.uuid=0");
+                    client.Headers.Add("Priority", "u=0, i");
+                    client.Headers.Add("sec-ch-ua", "\"(Not(A:Brand\";v=\"99\", \"Google Chrome\";v=\"124\", \"Chromium\";v=\"124\"");
+                    client.Headers.Add("sec-ch-ua-full-version-list", "\"(Not(A:Brand\";v=\"99.0.0.0\", \"Google Chrome\";v=\"124\", \"Chromium\";v=\"124\"");
+                    client.Headers.Add("sec-ch-ua-mobile", "?0");
+                    client.Headers.Add("sec-ch-ua-platform", "\"macOS\"");
+                    client.Headers.Add("sec-fetch-dest", "document");
+                    client.Headers.Add("sec-fetch-mode", "navigate");
+                    client.Headers.Add("sec-fetch-site", "none");
+                    client.Headers.Add("sec-fetch-user", "?1");
                     client.Headers.Add("Upgrade-Insecure-Requests", "1");
-                    client.Headers.Add("Cookie", "NNB=5Z6ILX3ZKMLGO; nid_inf=490044677; NID_AUT=rFmati7co9izzzJzdUlQQurkpqn3DReAtXKyDo8MSPUrfuHeV6eEBP6xri5Mb6FY; NID_JKL=LChhy6zSGaeMi+xf/3QLtuuBUgNo0t7wUo2by5VgLmk=; loungesRecentlyVisited=chzzk; lastSeenQuestPopupTime=1730551445280; recentKeyword=%5B%5D; recentKeywordInLounge=%5B%5D; BUC=68tGDuP97gonv2Tan7GEzoTZFHI5s5Gxnt6KlEDxh8o=; NID_SES=AAABnfhe0qmsEnuN5XoJEr4K3k7NK61vIGMUf7gaBI60il63SeYw+5DQ+mHJ5LNPrm4ulKVx7IlMUMHW4z3KgtHJxv8rP0K52qvk06JvDbRUmolgpgrvGlt6/3qJ52YJ08ymfrBt12EEdpXDlkyxTfKZtnuPjQ7vgUZTdFD8eRtUobkmvDIqb7kd/52g00DTuel1fUlWxS5zmZP01T0Mec9wK2assSix9R7lVK7ETn57FeZZhAtbyn6JBzrwHOdrL0CVNbiv9fiS2dSwskLlMokOztU6oJreA2g26cEpfOBI7VnXctUstOFBgnjjuEnV25G0ropigkh8MOkPRPQdLJGvWyjf7qCSK93XNDMelI3+B7+iS4fxL24MMeWYact/YXIbiRRUeAq3F8M8qUeT10SKV+P+RswzOdlNuTvQSJdnrKGiAS6xSB6up4L3nivJF/qqzBjmL2dJC3LV3lXrOhZkQpHxDliFrrs5/S+TfJAReBfRKyK44jw628WugqMgZ7rT2RgSLg89BnMIIcE9JGR3u2qDueeVt8KYVbdxZKuzj/vP; ba.uuid=0");
+
 
                     // Open the stream for the URL and read the content asynchronously
                     using (Stream data = await client.OpenReadTaskAsync(targetURL))
@@ -174,11 +209,11 @@ namespace chzzkbangonallramTEST
                     // Parse JSON to extract the 'channelName' from 'content'
                     dynamic jsonResponse = JsonConvert.DeserializeObject(result);
 
-                    // Extract the details from the response
                     string channelName = jsonResponse.content.channelName;
                     bool openlive = jsonResponse.content.openLive;
                     int followerCount = jsonResponse.content.followerCount;
                     string livetitle = "not streming";
+
                     if (openlive)
                     {
                         targetURL = "https://api.chzzk.naver.com/service/v1/channels/" + Targetid + "/live-detail";
@@ -191,50 +226,57 @@ namespace chzzkbangonallramTEST
                             }
                         }
                         jsonResponse = JsonConvert.DeserializeObject(result);
-
                         livetitle = jsonResponse.content.liveTitle;
                     }
-                    else
-                    {
-                        livetitle = "not streming";
 
-                    }
-
-                    // Update the "users" array with the new information
+                    // Update user information in jsonData
                     usersArray[i]["channelName"] = channelName;
                     usersArray[i]["openlive"] = openlive;
                     usersArray[i]["followerCount"] = followerCount;
                     usersArray[i]["livetitle"] = livetitle;
 
 
-                    // Save the updated JSON data back to the file
-                    File.WriteAllText(JsonfileDirectory, jsonData.ToString());
 
-                    // Optionally, print the updated JSON to the console
+                    //Print(usersArray.ToString());
+                    //Print($"{usersArray[i]["channelName"]} \n\n {usersArray[i]["openlive"]} \n\n {usersArray[i]["followerCount"]} \n\n {usersArray[i]["livetitle"]}");
                 }
                 catch (Exception ex)
                 {
-                    // Handle communication failures
                     MessageBox.Show($"Error: 채널 링크의 값을 확인 해주세요 \n\n{ex.Message}\n\n{ex.StackTrace}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
                 finally
                 {
                     api_get_runing = false;
                     targetURL = "notset";
+                    // Save the updated JSON data back to the file after the loop finishes
+                    await Task.Delay(500);
+                }
+            }
+            File.WriteAllText(JsonfileDirectory, data1.ToString());
+            jsonData = data1;
+
+        }
+
+
+        
+
+
+        private void update_labe()
+        {
+            JArray usersArray = (JArray)jsonData["users"];
+            for (int i = 0; i < usersArray.Count; i++)
+            {
+                Print(usersArray[i]["openlive"].ToString());
+                if (usersArray[i]["openlive"].Equals("true"))
+                {
+                    Print(usersArray[i]["channelName"].ToString());
                 }
             }
         }
 
 
-        private void Print(string message)
-        {
-            MessageBox.Show($"{message}", "디버깅", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        } 
 
-        private void printerror(string message)
-        {
-            MessageBox.Show($"{message}", "디버깅", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
 
         private async void reload_button_click(object sender, EventArgs e)
         {
@@ -273,7 +315,6 @@ namespace chzzkbangonallramTEST
                             throw new UriFormatException("URL 형식이 올바르지 않습니다.");
                         }
 
-                        
                         string lastPart = uri.Segments[uri.Segments.Length - 1];
 
                         // JSON 파일이 존재하는지 확인
@@ -286,16 +327,21 @@ namespace chzzkbangonallramTEST
                         // JSON 파일 내용 읽기
                         string jsonContent = File.ReadAllText(JsonfileDirectory);
 
-                        // JSON 데이터를 dynamic 형식으로 파싱
+                        // JSON 데이터를 JObject 형식으로 파싱
                         JObject data = string.IsNullOrWhiteSpace(jsonContent) ? new JObject() : JObject.Parse(jsonContent);
 
                         // "users" 배열 생성 또는 가져오기
                         JArray usersArray = data["users"] as JArray ?? new JArray();
 
+                        // 가장 큰 stremerid 찾기
+                        int maxStremerid = usersArray.Count > 0
+                            ? usersArray.Max(user => (int)user["stremerid"])
+                            : 0;
+
                         // 새 사용자 데이터 생성
                         JObject newUser = new JObject
                         {
-
+                            ["stremerid"] = maxStremerid + 1, // 가장 큰 stremerid + 1
                             ["channelName"] = "noname",
                             ["openlive"] = false,
                             ["followerCount"] = 0,
@@ -317,19 +363,19 @@ namespace chzzkbangonallramTEST
                     }
                     catch (UriFormatException uriEx)
                     {
-                        label2.Text = "추가가 취소 되었습니다";
+                        label2.Text = "추가가 취소 \n되었습니다";
                         label2.ForeColor = System.Drawing.Color.Red;
                         printerror("URL 형식이 잘못되었습니다.\n\n" + uriEx.Message);
                     }
                     catch (JsonException jsonEx)
                     {
-                        label2.Text = "추가가 취소 되었습니다";
+                        label2.Text = "추가가 취소 \n되었습니다";
                         label2.ForeColor = System.Drawing.Color.Red;
                         printerror("JSON 처리 중 오류가 발생했습니다.\n\n" + jsonEx.Message);
                     }
                     catch (Exception ex)
                     {
-                        label2.Text = "추가가 취소 되었습니다";
+                        label2.Text = "추가가 취소 \n되었습니다";
                         label2.ForeColor = System.Drawing.Color.Red;
                         printerror("오류가 발생했습니다.\n\n" + ex.Message);
                     }
@@ -354,6 +400,7 @@ namespace chzzkbangonallramTEST
                 printerror("url이 입력되지 않았습니다.");
             }
         }
+
 
 
 
@@ -429,6 +476,20 @@ namespace chzzkbangonallramTEST
             return scrollTaggedControls;
         }
 
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

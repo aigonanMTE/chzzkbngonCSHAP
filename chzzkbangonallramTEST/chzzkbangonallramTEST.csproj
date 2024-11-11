@@ -97,5 +97,8 @@
   <ItemGroup>
     <None Include="Resources\제1목없음.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ERROR-none-file.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -42,8 +42,24 @@ namespace chzzkbangonallramTEST
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.del_button1 = new System.Windows.Forms.Button();
+            this.del_button2 = new System.Windows.Forms.Button();
+            this.del_button3 = new System.Windows.Forms.Button();
+            this.streming_title_label3 = new System.Windows.Forms.Label();
+            this.streming_title_label2 = new System.Windows.Forms.Label();
+            this.streming_title_label1 = new System.Windows.Forms.Label();
+            this.channle_image_panel3 = new System.Windows.Forms.Panel();
+            this.stremer_name_label3 = new System.Windows.Forms.Label();
+            this.channle_image_panel2 = new System.Windows.Forms.Panel();
+            this.stremer_name_label2 = new System.Windows.Forms.Label();
+            this.channle_image_panel1 = new System.Windows.Forms.Panel();
+            this.stremer_name_label1 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,14 +192,193 @@ namespace chzzkbangonallramTEST
             this.label4.Size = new System.Drawing.Size(136, 42);
             this.label4.TabIndex = 6;
             this.label4.Text = "체널 링크";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             this.label4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.label4_Click);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.del_button1);
+            this.panel3.Controls.Add(this.del_button2);
+            this.panel3.Controls.Add(this.del_button3);
+            this.panel3.Controls.Add(this.streming_title_label3);
+            this.panel3.Controls.Add(this.streming_title_label2);
+            this.panel3.Controls.Add(this.streming_title_label1);
+            this.panel3.Controls.Add(this.channle_image_panel3);
+            this.panel3.Controls.Add(this.stremer_name_label3);
+            this.panel3.Controls.Add(this.channle_image_panel2);
+            this.panel3.Controls.Add(this.stremer_name_label2);
+            this.panel3.Controls.Add(this.channle_image_panel1);
+            this.panel3.Controls.Add(this.stremer_name_label1);
+            this.panel3.Controls.Add(this.button6);
+            this.panel3.Controls.Add(this.button5);
+            this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(-3, 174);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(483, 518);
             this.panel3.TabIndex = 7;
+            // 
+            // del_button1
+            // 
+            this.del_button1.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.del_button1.Location = new System.Drawing.Point(367, 34);
+            this.del_button1.Name = "del_button1";
+            this.del_button1.Size = new System.Drawing.Size(85, 45);
+            this.del_button1.TabIndex = 9;
+            this.del_button1.Text = "삭제";
+            this.del_button1.UseVisualStyleBackColor = true;
+            // 
+            // del_button2
+            // 
+            this.del_button2.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.del_button2.Location = new System.Drawing.Point(367, 180);
+            this.del_button2.Name = "del_button2";
+            this.del_button2.Size = new System.Drawing.Size(85, 45);
+            this.del_button2.TabIndex = 9;
+            this.del_button2.Text = "삭제";
+            this.del_button2.UseVisualStyleBackColor = true;
+            // 
+            // del_button3
+            // 
+            this.del_button3.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.del_button3.Location = new System.Drawing.Point(367, 324);
+            this.del_button3.Name = "del_button3";
+            this.del_button3.Size = new System.Drawing.Size(85, 45);
+            this.del_button3.TabIndex = 8;
+            this.del_button3.Text = "삭제";
+            this.del_button3.UseVisualStyleBackColor = true;
+            // 
+            // streming_title_label3
+            // 
+            this.streming_title_label3.AutoSize = true;
+            this.streming_title_label3.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.streming_title_label3.ForeColor = System.Drawing.Color.White;
+            this.streming_title_label3.Location = new System.Drawing.Point(176, 376);
+            this.streming_title_label3.Name = "streming_title_label3";
+            this.streming_title_label3.Size = new System.Drawing.Size(293, 42);
+            this.streming_title_label3.TabIndex = 8;
+            this.streming_title_label3.Text = "제목제목제목제목제목";
+            this.streming_title_label3.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // streming_title_label2
+            // 
+            this.streming_title_label2.AutoSize = true;
+            this.streming_title_label2.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.streming_title_label2.ForeColor = System.Drawing.Color.White;
+            this.streming_title_label2.Location = new System.Drawing.Point(176, 232);
+            this.streming_title_label2.Name = "streming_title_label2";
+            this.streming_title_label2.Size = new System.Drawing.Size(293, 42);
+            this.streming_title_label2.TabIndex = 8;
+            this.streming_title_label2.Text = "제목제목제목제목제목";
+            this.streming_title_label2.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // streming_title_label1
+            // 
+            this.streming_title_label1.AutoSize = true;
+            this.streming_title_label1.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.streming_title_label1.ForeColor = System.Drawing.Color.White;
+            this.streming_title_label1.Location = new System.Drawing.Point(176, 86);
+            this.streming_title_label1.Name = "streming_title_label1";
+            this.streming_title_label1.Size = new System.Drawing.Size(293, 42);
+            this.streming_title_label1.TabIndex = 8;
+            this.streming_title_label1.Text = "제목제목제목제목제목";
+            this.streming_title_label1.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // channle_image_panel3
+            // 
+            this.channle_image_panel3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel3.Location = new System.Drawing.Point(17, 327);
+            this.channle_image_panel3.Name = "channle_image_panel3";
+            this.channle_image_panel3.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel3.TabIndex = 7;
+            // 
+            // stremer_name_label3
+            // 
+            this.stremer_name_label3.AutoSize = true;
+            this.stremer_name_label3.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.stremer_name_label3.ForeColor = System.Drawing.Color.White;
+            this.stremer_name_label3.Location = new System.Drawing.Point(176, 327);
+            this.stremer_name_label3.Name = "stremer_name_label3";
+            this.stremer_name_label3.Size = new System.Drawing.Size(185, 42);
+            this.stremer_name_label3.TabIndex = 6;
+            this.stremer_name_label3.Text = "스트리머 이름";
+            this.stremer_name_label3.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // channle_image_panel2
+            // 
+            this.channle_image_panel2.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel2.Location = new System.Drawing.Point(17, 183);
+            this.channle_image_panel2.Name = "channle_image_panel2";
+            this.channle_image_panel2.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel2.TabIndex = 7;
+            // 
+            // stremer_name_label2
+            // 
+            this.stremer_name_label2.AutoSize = true;
+            this.stremer_name_label2.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.stremer_name_label2.ForeColor = System.Drawing.Color.White;
+            this.stremer_name_label2.Location = new System.Drawing.Point(176, 183);
+            this.stremer_name_label2.Name = "stremer_name_label2";
+            this.stremer_name_label2.Size = new System.Drawing.Size(185, 42);
+            this.stremer_name_label2.TabIndex = 6;
+            this.stremer_name_label2.Text = "스트리머 이름";
+            this.stremer_name_label2.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // channle_image_panel1
+            // 
+            this.channle_image_panel1.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel1.Location = new System.Drawing.Point(17, 37);
+            this.channle_image_panel1.Name = "channle_image_panel1";
+            this.channle_image_panel1.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel1.TabIndex = 7;
+            // 
+            // stremer_name_label1
+            // 
+            this.stremer_name_label1.AutoSize = true;
+            this.stremer_name_label1.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.stremer_name_label1.ForeColor = System.Drawing.Color.White;
+            this.stremer_name_label1.Location = new System.Drawing.Point(187, 37);
+            this.stremer_name_label1.Name = "stremer_name_label1";
+            this.stremer_name_label1.Size = new System.Drawing.Size(185, 42);
+            this.stremer_name_label1.TabIndex = 6;
+            this.stremer_name_label1.Text = "스트리머 이름";
+            this.stremer_name_label1.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold);
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(183, 466);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(37, 42);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "<";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(264, 466);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(37, 42);
+            this.button5.TabIndex = 4;
+            this.button5.Text = ">";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(226, 466);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 42);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "1";
             // 
             // Form1
             // 
@@ -206,6 +401,8 @@ namespace chzzkbangonallramTEST
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -227,6 +424,21 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label stremer_name_label1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label streming_title_label1;
+        private System.Windows.Forms.Panel channle_image_panel1;
+        private System.Windows.Forms.Label streming_title_label3;
+        private System.Windows.Forms.Label streming_title_label2;
+        private System.Windows.Forms.Panel channle_image_panel3;
+        private System.Windows.Forms.Label stremer_name_label3;
+        private System.Windows.Forms.Panel channle_image_panel2;
+        private System.Windows.Forms.Label stremer_name_label2;
+        private System.Windows.Forms.Button del_button1;
+        private System.Windows.Forms.Button del_button2;
+        private System.Windows.Forms.Button del_button3;
     }
 }
 

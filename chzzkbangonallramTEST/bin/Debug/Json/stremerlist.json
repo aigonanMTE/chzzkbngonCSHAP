@@ -1,18 +1,35 @@
 {
   "users": [
     {
+      "stremerid": 1,
       "channelName": "소니쇼",
-      "openlive": true,
-      "followerCount": 83426,
-      "livetitle": "마비저주중독절망 개빨리 돌리는 주술사 왔습니다 ٩( ᐛ )و",
+      "openlive": false,
+      "followerCount": 83632,
+      "livetitle": "not streming",
       "channlid": "cd04c50c6ff488ac96f8900e26e5b993"
     },
     {
+      "stremerid": 2,
       "channelName": "햇살살",
       "openlive": false,
-      "followerCount": 28439,
+      "followerCount": 28464,
       "livetitle": "not streming",
       "channlid": "2c3d33db0543d96700ec6d1ad83090a2"
+    },
+    {
+      "stremerid": 3,
+      "channelName": "풍월량",
+      "openlive": true,
+      "followerCount": 208767,
+      "livetitle": "풍월량",
+      "channlid": "7ce8032370ac5121dcabce7bad375ced"
     }
   ]
 }
+
+
+
+
+
+
+
