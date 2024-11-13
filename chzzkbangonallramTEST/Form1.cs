@@ -69,10 +69,11 @@ namespace chzzkbangonallramTEST
             button5.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.FlatAppearance.BorderSize = 0;
+            no_open_live.Visible = false;
             update_labe();
             
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -155,6 +156,34 @@ namespace chzzkbangonallramTEST
             }
         }
 
+
+        public string GetdataByName(string channelName , string dataname , bool fullname)
+        {
+            // "users" 배열을 가져와서 각 스트리머의 정보를 확인합니다.
+            JArray users = (JArray)jsonData["users"];
+
+            foreach (var user in users)
+            {
+                if ((string)user["channelName"] == channelName)
+                {
+                    if (!fullname)
+                    {
+                        return (string)user[$"{dataname}"];
+                    }
+                    else 
+                    { 
+                        string dataValue = (string)user[$"{dataname}"];
+                        if (!string.IsNullOrEmpty(dataValue) && dataValue.Length > 11)
+                        {
+                            return dataValue.Substring(0, 11) + ".."; // 11자 이후를 ".."으로 대체
+                        }
+                        return dataValue; // 11자 이하이면 그대로 반환
+                    }
+                }
+            }
+
+            return null; // channelName에 해당하는 channlid가 없을 경우 null 반환
+        }
 
 
 
@@ -352,10 +381,46 @@ namespace chzzkbangonallramTEST
                 pageforstremersname.Add($"Page {page + 1}: {{{string.Join(", ", pageUsers)}}}");
             }
 
-            // 페이지 1에서 유저 이름을 올바르게 설정
+            del_button3.Visible = true;
+            channle_image_panel3.Visible = true;
+            del_button2.Visible = true;
+            channle_image_panel2.Visible = true;
+            del_button1.Visible = true;
+            channle_image_panel1.Visible = true;
+
+
+            // 온라인 아닌 스트리머 숨기기
+            if (GetUserName(thispage, 2) == null)
+            {
+                del_button3.Visible = false;
+                channle_image_panel3.Visible = false;
+                no_open_live.Visible = false;
+            }
+            if (GetUserName(thispage, 1) == null)
+            {
+                del_button2.Visible = false;
+                channle_image_panel2.Visible = false;
+                no_open_live.Visible = false;
+            }
+            if (GetUserName(thispage, 0) == null)
+            {
+                del_button1.Visible = false;
+                channle_image_panel1.Visible = false;
+                no_open_live.Visible = true;
+            }
+
+
+                // 페이지 1에서 유저 이름을 올바르게 설정
             stremer_name_label1.Text = GetUserName(thispage, 0); // 첫 번째 유저
             stremer_name_label2.Text = GetUserName(thispage, 1); // 두 번째 유저
             stremer_name_label3.Text = GetUserName(thispage, 2); // 세 번째 유저
+
+            // 제목 업데이트
+            streming_title_label1.Text = GetdataByName(GetUserName(thispage, 0) , "livetitle" , true);
+            streming_title_label2.Text = GetdataByName(GetUserName(thispage, 1), "livetitle", true);
+            streming_title_label3.Text = GetdataByName(GetUserName(thispage, 2), "livetitle", true);
+
+
         }
 
 
@@ -604,6 +669,16 @@ namespace chzzkbangonallramTEST
                 label3.Text = thispage.ToString();
                 update_labe();
             }
+        }
+
+        private void no_open_live_MouseClick(object sender, MouseEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://chzzk.naver.com/");
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

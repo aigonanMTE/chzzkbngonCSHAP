@@ -31,7 +31,6 @@ namespace chzzkbangonallramTEST
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -49,15 +48,17 @@ namespace chzzkbangonallramTEST
             this.streming_title_label3 = new System.Windows.Forms.Label();
             this.streming_title_label2 = new System.Windows.Forms.Label();
             this.streming_title_label1 = new System.Windows.Forms.Label();
-            this.channle_image_panel3 = new System.Windows.Forms.Panel();
             this.stremer_name_label3 = new System.Windows.Forms.Label();
-            this.channle_image_panel2 = new System.Windows.Forms.Panel();
             this.stremer_name_label2 = new System.Windows.Forms.Label();
-            this.channle_image_panel1 = new System.Windows.Forms.Panel();
             this.stremer_name_label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.no_open_live = new System.Windows.Forms.Panel();
+            this.channle_image_panel3 = new System.Windows.Forms.Panel();
+            this.channle_image_panel2 = new System.Windows.Forms.Panel();
+            this.channle_image_panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -78,19 +79,6 @@ namespace chzzkbangonallramTEST
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.button3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.제1목없음;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("굴림", 20F);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(357, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(32, 31);
-            this.button3.TabIndex = 3;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -101,6 +89,7 @@ namespace chzzkbangonallramTEST
             this.label1.Size = new System.Drawing.Size(204, 37);
             this.label1.TabIndex = 1;
             this.label1.Text = "치지직 뱅온 알람";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             this.label1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.label1_Click);
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
             this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
@@ -198,6 +187,7 @@ namespace chzzkbangonallramTEST
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.no_open_live);
             this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.del_button1);
             this.panel3.Controls.Add(this.del_button2);
@@ -296,14 +286,6 @@ namespace chzzkbangonallramTEST
             this.streming_title_label1.Text = "제목제목제목제목제목";
             this.streming_title_label1.Click += new System.EventHandler(this.label6_Click);
             // 
-            // channle_image_panel3
-            // 
-            this.channle_image_panel3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
-            this.channle_image_panel3.Location = new System.Drawing.Point(17, 327);
-            this.channle_image_panel3.Name = "channle_image_panel3";
-            this.channle_image_panel3.Size = new System.Drawing.Size(120, 120);
-            this.channle_image_panel3.TabIndex = 7;
-            // 
             // stremer_name_label3
             // 
             this.stremer_name_label3.AutoSize = true;
@@ -316,14 +298,6 @@ namespace chzzkbangonallramTEST
             this.stremer_name_label3.Text = "스트리머 이름";
             this.stremer_name_label3.Click += new System.EventHandler(this.label5_Click);
             // 
-            // channle_image_panel2
-            // 
-            this.channle_image_panel2.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
-            this.channle_image_panel2.Location = new System.Drawing.Point(17, 183);
-            this.channle_image_panel2.Name = "channle_image_panel2";
-            this.channle_image_panel2.Size = new System.Drawing.Size(120, 120);
-            this.channle_image_panel2.TabIndex = 7;
-            // 
             // stremer_name_label2
             // 
             this.stremer_name_label2.AutoSize = true;
@@ -335,14 +309,6 @@ namespace chzzkbangonallramTEST
             this.stremer_name_label2.TabIndex = 6;
             this.stremer_name_label2.Text = "스트리머 이름";
             this.stremer_name_label2.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // channle_image_panel1
-            // 
-            this.channle_image_panel1.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
-            this.channle_image_panel1.Location = new System.Drawing.Point(17, 37);
-            this.channle_image_panel1.Name = "channle_image_panel1";
-            this.channle_image_panel1.Size = new System.Drawing.Size(120, 120);
-            this.channle_image_panel1.TabIndex = 7;
             // 
             // stremer_name_label1
             // 
@@ -395,6 +361,53 @@ namespace chzzkbangonallramTEST
             this.label3.TabIndex = 0;
             this.label3.Text = "1";
             // 
+            // no_open_live
+            // 
+            this.no_open_live.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.무제_1;
+            this.no_open_live.Location = new System.Drawing.Point(66, 34);
+            this.no_open_live.Name = "no_open_live";
+            this.no_open_live.Size = new System.Drawing.Size(363, 351);
+            this.no_open_live.TabIndex = 8;
+            this.no_open_live.Visible = false;
+            this.no_open_live.MouseClick += new System.Windows.Forms.MouseEventHandler(this.no_open_live_MouseClick);
+            // 
+            // channle_image_panel3
+            // 
+            this.channle_image_panel3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel3.Location = new System.Drawing.Point(17, 327);
+            this.channle_image_panel3.Name = "channle_image_panel3";
+            this.channle_image_panel3.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel3.TabIndex = 7;
+            // 
+            // channle_image_panel2
+            // 
+            this.channle_image_panel2.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel2.Location = new System.Drawing.Point(17, 183);
+            this.channle_image_panel2.Name = "channle_image_panel2";
+            this.channle_image_panel2.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel2.TabIndex = 7;
+            // 
+            // channle_image_panel1
+            // 
+            this.channle_image_panel1.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel1.Location = new System.Drawing.Point(17, 37);
+            this.channle_image_panel1.Name = "channle_image_panel1";
+            this.channle_image_panel1.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel1.TabIndex = 7;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.button3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.제1목없음;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("굴림", 20F);
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(357, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(32, 31);
+            this.button3.TabIndex = 3;
+            this.button3.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -412,7 +425,7 @@ namespace chzzkbangonallramTEST
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
-            this.Text = "치지직뱅온알람";
+            this.Text = "pa";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -455,6 +468,7 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Button del_button2;
         private System.Windows.Forms.Button del_button3;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Panel no_open_live;
     }
 }
 
