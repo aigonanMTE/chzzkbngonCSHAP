@@ -15,6 +15,7 @@ using System.Reflection;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Drawing.Drawing2D;
+using System.Security.Policy;
 
 namespace chzzkbangonallramTEST
 {
@@ -186,6 +187,46 @@ namespace chzzkbangonallramTEST
         }
 
 
+        //다운로드 함수
+        public async Task DownloadImageAsync(string link, string name)
+        {
+            try
+            {
+                // 경로에 디렉토리가 없다면 생성
+                string savePath = $@"{ThisDirectory}\images";
+                if (!Directory.Exists(savePath))
+                {
+                    Directory.CreateDirectory(savePath);
+                }
+
+                // 파일 경로 설정
+                string filePath = Path.Combine(savePath, name);
+
+                // 시간 체크 시작
+                var start = DateTime.Now;
+
+                // 이미지 다운로드
+                using (HttpClient client = new HttpClient())
+                {
+                    HttpResponseMessage response = await client.GetAsync(link);
+                    response.EnsureSuccessStatusCode();
+
+                    byte[] imageBytes = await response.Content.ReadAsByteArrayAsync();
+                    File.WriteAllBytes(filePath, imageBytes);
+                }
+
+                // 다운로드 시간 계산
+                var elapsed = DateTime.Now - start;
+                Print($"다운로드 시간: {elapsed.TotalSeconds}초");
+
+                Print($"이미지가 {savePath}에 저장되었습니다.");
+            }
+            catch (Exception e)
+            {
+                Print($"이미지 다운로드 오류: \nlink : {link}\n \n{e.Message}");
+            }
+        }
+
 
         public bool api_get_runing = false;
 
@@ -247,10 +288,13 @@ namespace chzzkbangonallramTEST
                     bool openlive = jsonResponse.content.openLive;
                     int followerCount = jsonResponse.content.followerCount;
                     string livetitle = "not streming";
+                    string imageurl = "notload";
+                    string imagename = "notload";
 
                     if (openlive)
                     {
                         targetURL = "https://api.chzzk.naver.com/service/v1/channels/" + Targetid + "/live-detail";
+                        //https://api.chzzk.naver.com/service/v1/channels/5f44570b82fb82d4814ef9502cf6401a/live-detail
                         result = string.Empty;
                         using (Stream data = await client.OpenReadTaskAsync(targetURL))
                         {
@@ -261,13 +305,45 @@ namespace chzzkbangonallramTEST
                         }
                         jsonResponse = JsonConvert.DeserializeObject(result);
                         livetitle = jsonResponse.content.liveTitle;
+                        imageurl = jsonResponse.content.channel.channelImageUrl;
+
+                        string url = imageurl;
+
+                        // URL에서 경로 추출
+                        Uri uri = new Uri(url);
+                        string path = uri.AbsolutePath; // "/MjAyMzEyMTlfMTU3/MDAxNzAyOTcwMjUyNjMw.Z2tUcFtUCGZQ6au7-J4Y3AdQxZfvUflu4cGHrlmxPjog.Oiu5AzVJUchsNRrQhiZ3ic4n1fq5qlMGKoE7wCAvZDMg.JPEG/KakaoTalk_20201211_220843154.jpg"
+
+                        // 필요한 부분만 추출
+                        string[] parts = path.Split('/');
+                        string targetPart = parts[2]; // "MjAyMzEyMTlfMTU3/MDAxNzAyOTcwMjUyNjMw.Z2tUcFtUCGZQ6au7-J4Y3AdQxZfvUflu4cGHrlmxPjog.Oiu5AzVJUchsNRrQhiZ3ic4n1fq5qlMGKoE7wCAvZDMg.JPEG"
+
+
+
+                        imagename = targetPart;
+                        if (usersArray[i]["imageurl"].ToString() == "notload" || usersArray[i]["imagedownload"].ToString() != "Load")
+                        {//다운로드
+                            try
+                            {
+                                await DownloadImageAsync(imageurl, imagename);
+                                usersArray[i]["imagedownload"] = "Load";
+
+                            }
+                            catch (Exception ex)
+                            {
+                                usersArray[i]["imagedownload"] = "notload";
+                                printerror($"이미지 다운로드중 에러 api요청 함수\n\n {ex}");
+                            }
+                        }
                     }
+
 
                     // Update user information in jsonData
                     usersArray[i]["channelName"] = channelName;
                     usersArray[i]["openlive"] = openlive;
                     usersArray[i]["followerCount"] = followerCount;
                     usersArray[i]["livetitle"] = livetitle;
+                    usersArray[i]["imageurl"] = imageurl;
+                    usersArray[i]["imagename"] = imagename;
 
 
 
@@ -284,10 +360,10 @@ namespace chzzkbangonallramTEST
                     api_get_runing = false;
                     targetURL = "notset";
                     // Save the updated JSON data back to the file after the loop finishes
+                    File.WriteAllText(JsonfileDirectory, data1.ToString());
                     await Task.Delay(500);
                 }
             }
-            File.WriteAllText(JsonfileDirectory, data1.ToString());
             jsonData = data1;
 
         }
@@ -381,30 +457,24 @@ namespace chzzkbangonallramTEST
                 pageforstremersname.Add($"Page {page + 1}: {{{string.Join(", ", pageUsers)}}}");
             }
 
-            del_button3.Visible = true;
             channle_image_panel3.Visible = true;
-            del_button2.Visible = true;
             channle_image_panel2.Visible = true;
-            del_button1.Visible = true;
             channle_image_panel1.Visible = true;
 
 
             // 온라인 아닌 스트리머 숨기기
             if (GetUserName(thispage, 2) == null)
             {
-                del_button3.Visible = false;
                 channle_image_panel3.Visible = false;
                 no_open_live.Visible = false;
             }
             if (GetUserName(thispage, 1) == null)
             {
-                del_button2.Visible = false;
                 channle_image_panel2.Visible = false;
                 no_open_live.Visible = false;
             }
             if (GetUserName(thispage, 0) == null)
             {
-                del_button1.Visible = false;
                 channle_image_panel1.Visible = false;
                 no_open_live.Visible = true;
             }
@@ -420,7 +490,23 @@ namespace chzzkbangonallramTEST
             streming_title_label2.Text = GetdataByName(GetUserName(thispage, 1), "livetitle", true);
             streming_title_label3.Text = GetdataByName(GetUserName(thispage, 2), "livetitle", true);
 
+            // 이미지 업데이트
+            if (GetdataByName(GetUserName(thispage, 0), "imagename", false) != null)
+            {
+                channle_image_panel1.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 0), "imagename", false)}");
+                channle_image_panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            }
 
+            if (GetdataByName(GetUserName(thispage, 1), "imagename", false) != null)
+            {
+                channle_image_panel2.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 1), "imagename", false)}");
+                channle_image_panel2.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            if (GetdataByName(GetUserName(thispage, 2), "imagename", false) != null)
+            {
+                channle_image_panel3.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 2), "imagename", false)}");
+                channle_image_panel3.BackgroundImageLayout = ImageLayout.Stretch;
+            }
         }
 
 
@@ -433,7 +519,9 @@ namespace chzzkbangonallramTEST
             
             if (!api_get_runing)
             {
+                update_labe();
                 await api_get();
+                update_labe();
             }
         }
 
@@ -496,7 +584,10 @@ namespace chzzkbangonallramTEST
                             ["openlive"] = false,
                             ["followerCount"] = 0,
                             ["livetitle"] = "notitle",
-                            ["channlid"] = lastPart
+                            ["channlid"] = lastPart,
+                            ["imageurl"] = "notload",
+                            ["imagename"] = "notload",
+                            ["imagedownload"] = "notload"
                         };
 
                         // "users" 배열에 새 데이터 추가
@@ -605,7 +696,7 @@ namespace chzzkbangonallramTEST
 
 
         private List<Control> FindScrollTaggedControls(Control parentControl)
-        {
+        { 
             List<Control> scrollTaggedControls = new List<Control>();
 
             foreach (Control control in parentControl.Controls)

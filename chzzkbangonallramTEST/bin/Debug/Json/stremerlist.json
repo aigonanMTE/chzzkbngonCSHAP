@@ -2,51 +2,14 @@
   "users": [
     {
       "stremerid": 1,
-      "channelName": "소니쇼",
-      "openlive": false,
-      "followerCount": 83740,
-      "livetitle": "not streming",
-      "channlid": "cd04c50c6ff488ac96f8900e26e5b993"
-    },
-    {
-      "stremerid": 2,
-      "channelName": "햇살살",
-      "openlive": false,
-      "followerCount": 28506,
-      "livetitle": "not streming",
-      "channlid": "2c3d33db0543d96700ec6d1ad83090a2"
-    },
-    {
-      "stremerid": 3,
-      "channelName": "풍월량",
+      "channelName": "유키츠네 Yukitsune",
       "openlive": true,
-      "followerCount": 208998,
-      "livetitle": "모텔 매니저 시뮬레이터 ",
-      "channlid": "7ce8032370ac5121dcabce7bad375ced"
-    },
-    {
-      "stremerid": 4,
-      "channelName": "배돈",
-      "openlive": false,
-      "followerCount": 40142,
-      "livetitle": "not streming",
-      "channlid": "554e99695decc451d57788b1fd5d5c07"
-    },
-    {
-      "stremerid": 5,
-      "channelName": "삐부",
-      "openlive": false,
-      "followerCount": 74295,
-      "livetitle": "not streming",
-      "channlid": "5f44570b82fb82d4814ef9502cf6401a"
-    },
-    {
-      "stremerid": 6,
-      "channelName": "이 다",
-      "openlive": true,
-      "followerCount": 53624,
-      "livetitle": "와이프(걍 도사), 나(대 건곤 전사느님)  바람의나라 클래식",
-      "channlid": "0076a519f147ee9fd0959bf02f9571ca"
+      "followerCount": 13770,
+      "livetitle": "듀오구함당:0 듀오해줘라",
+      "channlid": "52f13f0fde6421312164730f1332a5f1",
+      "imageurl": "https://nng-phinf.pstatic.net/MjAyNDAyMjRfMTcz/MDAxNzA4NzE1MzAxNDE3.MlExh5qo_QNLSRg1KGRcdSsldli6UTgSwrO-pUrqYbcg.ewB9i_n_ie5qZPUKV9odrUJYXeSc8xLfJeSXgGi-UVEg.PNG/1_.png",
+      "imagename": "MDAxNzA4NzE1MzAxNDE3.MlExh5qo_QNLSRg1KGRcdSsldli6UTgSwrO-pUrqYbcg.ewB9i_n_ie5qZPUKV9odrUJYXeSc8xLfJeSXgGi-UVEg.PNG",
+      "imagedownload": "Load"
     }
   ]
 }
