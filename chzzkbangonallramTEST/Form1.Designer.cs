@@ -43,7 +43,6 @@ namespace chzzkbangonallramTEST
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.no_open_live = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
             this.streming_title_label3 = new System.Windows.Forms.Label();
             this.streming_title_label2 = new System.Windows.Forms.Label();
             this.streming_title_label1 = new System.Windows.Forms.Label();
@@ -198,7 +197,6 @@ namespace chzzkbangonallramTEST
             // panel3
             // 
             this.panel3.Controls.Add(this.no_open_live);
-            this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.streming_title_label3);
             this.panel3.Controls.Add(this.streming_title_label2);
             this.panel3.Controls.Add(this.streming_title_label1);
@@ -219,23 +217,12 @@ namespace chzzkbangonallramTEST
             // no_open_live
             // 
             this.no_open_live.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.무제_1;
-            this.no_open_live.Location = new System.Drawing.Point(66, 34);
+            this.no_open_live.Location = new System.Drawing.Point(475, 154);
             this.no_open_live.Name = "no_open_live";
             this.no_open_live.Size = new System.Drawing.Size(363, 351);
             this.no_open_live.TabIndex = 8;
             this.no_open_live.Visible = false;
             this.no_open_live.MouseClick += new System.Windows.Forms.MouseEventHandler(this.no_open_live_MouseClick);
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("CookieRun Bold", 23F);
-            this.button7.Location = new System.Drawing.Point(346, 473);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(123, 45);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "디버깅";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // streming_title_label3
             // 
@@ -280,6 +267,7 @@ namespace chzzkbangonallramTEST
             this.channle_image_panel3.Name = "channle_image_panel3";
             this.channle_image_panel3.Size = new System.Drawing.Size(120, 120);
             this.channle_image_panel3.TabIndex = 7;
+            this.channle_image_panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel3_MouseClick);
             // 
             // stremer_name_label3
             // 
@@ -300,6 +288,7 @@ namespace chzzkbangonallramTEST
             this.channle_image_panel2.Name = "channle_image_panel2";
             this.channle_image_panel2.Size = new System.Drawing.Size(120, 120);
             this.channle_image_panel2.TabIndex = 7;
+            this.channle_image_panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel2_MouseClick);
             // 
             // stremer_name_label2
             // 
@@ -320,13 +309,14 @@ namespace chzzkbangonallramTEST
             this.channle_image_panel1.Name = "channle_image_panel1";
             this.channle_image_panel1.Size = new System.Drawing.Size(120, 120);
             this.channle_image_panel1.TabIndex = 7;
+            this.channle_image_panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel1_MouseClick);
             // 
             // stremer_name_label1
             // 
             this.stremer_name_label1.AutoSize = true;
             this.stremer_name_label1.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.stremer_name_label1.ForeColor = System.Drawing.Color.White;
-            this.stremer_name_label1.Location = new System.Drawing.Point(187, 37);
+            this.stremer_name_label1.Location = new System.Drawing.Point(176, 37);
             this.stremer_name_label1.Name = "stremer_name_label1";
             this.stremer_name_label1.Size = new System.Drawing.Size(185, 42);
             this.stremer_name_label1.TabIndex = 6;
@@ -428,7 +418,6 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Label stremer_name_label3;
         private System.Windows.Forms.Panel channle_image_panel2;
         private System.Windows.Forms.Label stremer_name_label2;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel no_open_live;
     }
 }

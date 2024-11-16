@@ -16,6 +16,7 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Drawing.Drawing2D;
 using System.Security.Policy;
+using System.Threading;
 
 namespace chzzkbangonallramTEST
 {
@@ -54,7 +55,7 @@ namespace chzzkbangonallramTEST
 
 
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
             button1.FlatStyle = FlatStyle.Flat;
             button1.FlatAppearance.BorderSize = 0;
@@ -71,10 +72,10 @@ namespace chzzkbangonallramTEST
             button6.FlatStyle = FlatStyle.Flat;
             button6.FlatAppearance.BorderSize = 0;
             no_open_live.Visible = false;
-            update_labe();
-            
+            no_open_live.Location = new Point(66, 34);
+            await StartApiUpdateLoopAsync();
         }
-        
+
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -123,7 +124,7 @@ namespace chzzkbangonallramTEST
         {
             string JsonfileDirectory = file_path;
 
-                // 파일 내용 읽기
+            // 파일 내용 읽기
             try
             {
                 if (File.Exists(JsonfileDirectory))
@@ -135,22 +136,22 @@ namespace chzzkbangonallramTEST
                     {
                         JObject jsonObject = JObject.Parse(jsonContent);
                         return jsonObject.ToString();
-                        
-                    }                    
-                    else                    
-                    {                   
-                        return "JSON 파일이 비어 있습니다.";                       
-                    }                   
-                }                
-                else               
-                {               
-                    return "JSON 파일을 찾을 수 없습니다.";                    
-                }               
-            }            
-            catch (JsonReaderException jex)            
-            {           
-                return $"JSON 파일의 형식이 잘못되었습니다: {jex.Message}";                
-            }            
+
+                    }
+                    else
+                    {
+                        return "JSON 파일이 비어 있습니다.";
+                    }
+                }
+                else
+                {
+                    return "JSON 파일을 찾을 수 없습니다.";
+                }
+            }
+            catch (JsonReaderException jex)
+            {
+                return $"JSON 파일의 형식이 잘못되었습니다: {jex.Message}";
+            }
             catch (Exception ex)
             {
                 return $"파일을 읽는 중 오류 발생: {ex.Message}";
@@ -158,7 +159,7 @@ namespace chzzkbangonallramTEST
         }
 
 
-        public string GetdataByName(string channelName , string dataname , bool fullname)
+        public string GetdataByName(string channelName, string dataname, bool fullname)
         {
             // "users" 배열을 가져와서 각 스트리머의 정보를 확인합니다.
             JArray users = (JArray)jsonData["users"];
@@ -171,8 +172,8 @@ namespace chzzkbangonallramTEST
                     {
                         return (string)user[$"{dataname}"];
                     }
-                    else 
-                    { 
+                    else
+                    {
                         string dataValue = (string)user[$"{dataname}"];
                         if (!string.IsNullOrEmpty(dataValue) && dataValue.Length > 11)
                         {
@@ -217,22 +218,17 @@ namespace chzzkbangonallramTEST
 
                 // 다운로드 시간 계산
                 var elapsed = DateTime.Now - start;
-                Print($"다운로드 시간: {elapsed.TotalSeconds}초");
-
-                Print($"이미지가 {savePath}에 저장되었습니다.");
             }
             catch (Exception e)
             {
-                Print($"이미지 다운로드 오류: \nlink : {link}\n \n{e.Message}");
+                printerror($"이미지 다운로드 오류: \nlink : {link}\n \n{e.Message}");
             }
         }
 
 
-        public bool api_get_runing = false;
 
         public async Task api_get()
         {
-            api_get_runing = true;
             // JSON 데이터를 파일에서 읽음
             string jsonContent = File.ReadAllText(JsonfileDirectory);
 
@@ -246,7 +242,6 @@ namespace chzzkbangonallramTEST
             {
                 string Targetid = usersArray[i]["channlid"].ToString();
                 targetURL = "https://api.chzzk.naver.com/service/v1/channels/" + Targetid;
-                api_get_runing = true;
                 string result = string.Empty;
                 usersArray = (JArray)data1["users"];
                 try
@@ -357,7 +352,6 @@ namespace chzzkbangonallramTEST
                 }
                 finally
                 {
-                    api_get_runing = false;
                     targetURL = "notset";
                     // Save the updated JSON data back to the file after the loop finishes
                     File.WriteAllText(JsonfileDirectory, data1.ToString());
@@ -369,7 +363,7 @@ namespace chzzkbangonallramTEST
         }
 
 
-        public string GetUserName(int pageNumber, int userIndex)
+        public string GetUserName(int pageNumber, int userIndex, bool fullname)
         {
             // pageforstremersname 리스트에서 해당 페이지 번호를 찾아 출력
             if (pageforstremersname.Count >= pageNumber && pageNumber > 0)
@@ -392,7 +386,18 @@ namespace chzzkbangonallramTEST
                     if (userIndex >= 0 && userIndex < users.Length)
                     {
                         // 유저 이름을 반환 (앞뒤 공백 제거)
-                        return users[userIndex].Trim();
+                        if (users[userIndex].Length >= 10 & !fullname)
+                        {
+                            return users[userIndex].Trim().Substring(0, 10) + "..";
+                        }
+                        else if (users[userIndex].Length <= 10 & fullname)
+                        {
+                            return users[userIndex].Trim();
+                        }
+                        else
+                        {
+                            return users[userIndex].Trim();
+                        }
                     }
                     else
                     {
@@ -422,6 +427,7 @@ namespace chzzkbangonallramTEST
         {
             // JSON 데이터에서 "users" 항목을 추출
             JArray usersArray = (JArray)jsonData["users"];
+            //Print(usersArray.ToString());
 
             // openlivestremername 리스트를 초기화 (중복 방지)
             openlivestremername.Clear(); // 이전 데이터 초기화
@@ -462,67 +468,154 @@ namespace chzzkbangonallramTEST
             channle_image_panel1.Visible = true;
 
 
+
             // 온라인 아닌 스트리머 숨기기
-            if (GetUserName(thispage, 2) == null)
+            if (GetUserName(thispage, 2, true) == null)
             {
                 channle_image_panel3.Visible = false;
                 no_open_live.Visible = false;
             }
-            if (GetUserName(thispage, 1) == null)
+            if (GetUserName(thispage, 1, true) == null)
             {
                 channle_image_panel2.Visible = false;
                 no_open_live.Visible = false;
             }
-            if (GetUserName(thispage, 0) == null)
+            if (GetUserName(thispage, 0, true) == null)
             {
                 channle_image_panel1.Visible = false;
                 no_open_live.Visible = true;
             }
 
 
-                // 페이지 1에서 유저 이름을 올바르게 설정
-            stremer_name_label1.Text = GetUserName(thispage, 0); // 첫 번째 유저
-            stremer_name_label2.Text = GetUserName(thispage, 1); // 두 번째 유저
-            stremer_name_label3.Text = GetUserName(thispage, 2); // 세 번째 유저
 
-            // 제목 업데이트
-            streming_title_label1.Text = GetdataByName(GetUserName(thispage, 0) , "livetitle" , true);
-            streming_title_label2.Text = GetdataByName(GetUserName(thispage, 1), "livetitle", true);
-            streming_title_label3.Text = GetdataByName(GetUserName(thispage, 2), "livetitle", true);
+            // 스트리머 이름 라벨 업데이트
+            stremer_name_label1.Text = GetUserName(thispage, 0, false); // 첫 번째 유저
+            stremer_name_label2.Text = GetUserName(thispage, 1, false); // 두 번째 유저
+            stremer_name_label3.Text = GetUserName(thispage, 2, false); // 세 번째 유저
+
+            // 스트리밍 제목 업데이트
+
+            streming_title_label1.Text = GetdataByName(GetUserName(thispage, 0, true), "livetitle", true);
+            streming_title_label2.Text = GetdataByName(GetUserName(thispage, 1, true), "livetitle", true);
+            streming_title_label3.Text = GetdataByName(GetUserName(thispage, 2, true), "livetitle", true);
+
 
             // 이미지 업데이트
-            if (GetdataByName(GetUserName(thispage, 0), "imagename", false) != null)
+            if (GetdataByName(GetUserName(thispage, 0, true), "imagename", false) != null)
             {
-                channle_image_panel1.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 0), "imagename", false)}");
+                channle_image_panel1.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 0, true), "imagename", false)}");
                 channle_image_panel1.BackgroundImageLayout = ImageLayout.Stretch;
             }
 
-            if (GetdataByName(GetUserName(thispage, 1), "imagename", false) != null)
+            if (GetdataByName(GetUserName(thispage, 1, false), "imagename", false) != null)
             {
-                channle_image_panel2.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 1), "imagename", false)}");
+                channle_image_panel2.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 1, true), "imagename", false)}");
                 channle_image_panel2.BackgroundImageLayout = ImageLayout.Stretch;
             }
-            if (GetdataByName(GetUserName(thispage, 2), "imagename", false) != null)
+            if (GetdataByName(GetUserName(thispage, 2, true), "imagename", false) != null)
             {
-                channle_image_panel3.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 2), "imagename", false)}");
+                channle_image_panel3.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 2, false), "imagename", false)}");
                 channle_image_panel3.BackgroundImageLayout = ImageLayout.Stretch;
             }
         }
 
 
 
+        private CancellationTokenSource _cts = new CancellationTokenSource();
 
-
-
-        private async void reload_button_click(object sender, EventArgs e)
+        public async Task StartApiUpdateLoopAsync()
         {
-            
-            if (!api_get_runing)
+            try
             {
-                update_labe();
+                while (!_cts.Token.IsCancellationRequested)
+                {
+                    api_update_labe(false);
+                    await Task.Delay(TimeSpan.FromMinutes(1), _cts.Token);
+                }
+            }
+            catch (TaskCanceledException)
+            {
+                // 타이머가 취소되면 예외가 발생하므로 이를 무시
+            }
+            catch (Exception ex)
+            {
+                printerror($"StartApiUpdateLoopAsync에서 오류 발생: {ex}");
+            }
+        }
+
+        public void StopApiUpdateLoop()
+        {
+            _cts.Cancel();
+        }
+
+
+
+        private CancellationTokenSource _cancellationTokenSource;
+
+        public async void AlarmLabelUpdate(int fontsize, Color color, string text, bool waitfor3sec)
+        {
+            try
+            {
+                // 이전 대기 작업 취소
+                _cancellationTokenSource?.Cancel();
+                _cancellationTokenSource = new CancellationTokenSource();
+                var token = _cancellationTokenSource.Token;
+
+                // Label 업데이트
+                label2.Font = new Font("CookieRun Bold", fontsize, FontStyle.Regular);
+                label2.ForeColor = color;
+                label2.Text = text;
+
+                if (waitfor3sec)
+                {
+                    try
+                    {
+                        // 3초 대기 또는 취소 대기
+                        await Task.Delay(3000, token);
+
+                        // 대기 중 취소되지 않았다면 텍스트를 지움
+                        if (!token.IsCancellationRequested)
+                        {
+                            label2.Text = "";
+                        }
+                    }
+                    catch (TaskCanceledException)
+                    {
+                        // 취소 시 특별히 처리할 필요 없음
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                printerror($"AlarmLabelUpdate에서 예외 발생 \n\n {ex}");
+            }
+        }
+
+        public async void api_update_labe(bool sudoung)
+        {
+            try
+            {
                 await api_get();
                 update_labe();
+                if (sudoung)
+                {
+                    AlarmLabelUpdate(18, System.Drawing.Color.Lime, "스트리머\n 목록을 업데이트\n 하였습니다", true);
+                }
+                else
+                {
+                    AlarmLabelUpdate(18, System.Drawing.Color.Lime, "자동으로 스트리머\n 목록을 업데이트\n 하였습니다", true);
+                }
+
             }
+            catch (Exception ex)
+            {
+                printerror($"api_update_labe에서 오류 발생{ex}");
+            }
+        }
+
+        private void reload_button_click(object sender, EventArgs e)
+        {
+            api_update_labe(true);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -597,27 +690,24 @@ namespace chzzkbangonallramTEST
                         // 변경된 JSON 데이터를 파일에 다시 저장
                         File.WriteAllText(JsonfileDirectory, data.ToString());
 
-                        Print(data.ToString());
 
-                        label2.Text = "추가 되었습니다";
-                        label2.ForeColor = System.Drawing.Color.Lime;
+
+                        AlarmLabelUpdate(18, System.Drawing.Color.Lime, "추가 되었습니다", true);
                     }
                     catch (UriFormatException uriEx)
                     {
-                        label2.Text = "추가가 취소 \n되었습니다";
-                        label2.ForeColor = System.Drawing.Color.Red;
+
+                        AlarmLabelUpdate(18, System.Drawing.Color.Red, "추가가 취소 \n되었습니다", true);
                         printerror("URL 형식이 잘못되었습니다.\n\n" + uriEx.Message);
                     }
                     catch (JsonException jsonEx)
                     {
-                        label2.Text = "추가가 취소 \n되었습니다";
-                        label2.ForeColor = System.Drawing.Color.Red;
+                        AlarmLabelUpdate(18, System.Drawing.Color.Red, "추가가 취소 \n되었습니다", true);
                         printerror("JSON 처리 중 오류가 발생했습니다.\n\n" + jsonEx.Message);
                     }
                     catch (Exception ex)
                     {
-                        label2.Text = "추가가 취소 \n되었습니다";
-                        label2.ForeColor = System.Drawing.Color.Red;
+                        AlarmLabelUpdate(18, System.Drawing.Color.Red, "추가가 취소 \n되었습니다", true);
                         printerror("오류가 발생했습니다.\n\n" + ex.Message);
                     }
                     finally
@@ -628,16 +718,14 @@ namespace chzzkbangonallramTEST
                 else
                 {
                     textBox2.Text = "";
-                    label2.Text = "추가가 취소 되었습니다";
-                    label2.ForeColor = System.Drawing.Color.Red;
+                    AlarmLabelUpdate(18, System.Drawing.Color.Red, "추가가 취소 \n되었습니다", true);
                     printerror("url이 정상적이지 않습니다.");
                 }
             }
             else
             {
                 textBox2.Text = "";
-                label2.Text = "추가가 취소 되었습니다";
-                label2.ForeColor = System.Drawing.Color.Red;
+                AlarmLabelUpdate(18, System.Drawing.Color.Red, "추가가 취소 \n되었습니다", true);
                 printerror("url이 입력되지 않았습니다.");
             }
         }
@@ -696,7 +784,7 @@ namespace chzzkbangonallramTEST
 
 
         private List<Control> FindScrollTaggedControls(Control parentControl)
-        { 
+        {
             List<Control> scrollTaggedControls = new List<Control>();
 
             foreach (Control control in parentControl.Controls)
@@ -744,7 +832,7 @@ namespace chzzkbangonallramTEST
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (thispage <= mexpage-1)
+            if (thispage <= mexpage - 1)
             {
                 thispage++;
                 label3.Text = thispage.ToString();
@@ -770,6 +858,76 @@ namespace chzzkbangonallramTEST
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dlete_user(int insu)
+        {
+            /// <summary>
+            /// 유저 삭제 함수
+            /// </summary>
+            /// <param name="insu">현제 페이지의 몆번제 인수 인지 적으셈 0 부터 2까지임</param>
+            if (MessageBox.Show("정말 삭제 하시겠습니까?", "YesOrNo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // 유저 json
+                JArray usersArray = (JArray)jsonData["users"];
+                string targetChannelName = GetUserName(thispage, insu, true);  // 삭제할 유저의 channelName
+                if (insu == 0)
+                {
+                    channle_image_panel1.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\ERROR-none-file.png");
+                    channle_image_panel1.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                if (insu == 1)
+                {
+                    channle_image_panel2.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\ERROR-none-file.png");
+                    channle_image_panel2.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                if (insu == 2)
+                {
+                    channle_image_panel3.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\ERROR-none-file.png");
+                    channle_image_panel3.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+
+                // 해당 channelName을 가진 유저 삭제
+                for (int i = usersArray.Count - 1; i >= 0; i--)
+                {
+                    if ((string)usersArray[i]["channelName"] == targetChannelName)
+                    {
+                        // 해당 유저 삭제
+                        usersArray[i].Remove();
+                        AlarmLabelUpdate(18, System.Drawing.Color.Lime, "삭제 되었습니다", true);
+                        break;
+                    }
+                }
+
+                // JSON 파일을 업데이트
+                File.WriteAllText(JsonfileDirectory, jsonData.ToString());
+
+                // API 업데이트
+                api_update_labe(false);
+            }
+        }
+        private void channle_image_panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dlete_user(0);
+            }
+        }
+
+        private void channle_image_panel2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dlete_user(1);
+            }
+        }
+
+        private void channle_image_panel3_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dlete_user(2);
+            }
         }
     }
 }
