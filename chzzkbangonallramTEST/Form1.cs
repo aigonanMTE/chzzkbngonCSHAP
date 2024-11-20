@@ -231,7 +231,7 @@ namespace chzzkbangonallramTEST
 
         //알람 보내기 함수
 
-        private void ShowNotification(string title, string text)
+        private void ShowNotification(string title, string text , string chid)
         {
             // NotifyIcon 객체 생성 및 설정
             NotifyIcon notifyIcon = new NotifyIcon
@@ -249,6 +249,8 @@ namespace chzzkbangonallramTEST
                 
                 // notifyIcon을 더 이상 사용하지 않을 경우 Dispose로 정리
                 notifyIcon.Dispose();
+                string link = $"https://chzzk.naver.com/{chid}";
+                System.Diagnostics.Process.Start(link);
             };
 
             // 3초 동안 알림 표시
@@ -364,7 +366,7 @@ namespace chzzkbangonallramTEST
                         //알람 보내기
                         if (usersArray[i]["bangonallrm"].ToString() == "False")
                         {
-                            ShowNotification(channelName, $"{channelName}님이 방송중 입니다!\n방송 제목 : {livetitle}");
+                            ShowNotification(channelName, $"{channelName}님이 방송중 입니다!\n방송 제목 : {livetitle}" , Targetid);
                             usersArray[i]["bangonallrm"] = true;
                         }
 
