@@ -56,6 +56,7 @@ namespace chzzkbangonallramTEST
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.howtousebtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -64,6 +65,7 @@ namespace chzzkbangonallramTEST
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panel1.Controls.Add(this.howtousebtn);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
@@ -234,6 +236,7 @@ namespace chzzkbangonallramTEST
             this.streming_title_label3.Size = new System.Drawing.Size(293, 42);
             this.streming_title_label3.TabIndex = 8;
             this.streming_title_label3.Text = "제목제목제목제목제목";
+            this.streming_title_label3.Visible = false;
             this.streming_title_label3.Click += new System.EventHandler(this.label6_Click);
             // 
             // streming_title_label2
@@ -246,6 +249,7 @@ namespace chzzkbangonallramTEST
             this.streming_title_label2.Size = new System.Drawing.Size(293, 42);
             this.streming_title_label2.TabIndex = 8;
             this.streming_title_label2.Text = "제목제목제목제목제목";
+            this.streming_title_label2.Visible = false;
             this.streming_title_label2.Click += new System.EventHandler(this.label6_Click);
             // 
             // streming_title_label1
@@ -258,6 +262,7 @@ namespace chzzkbangonallramTEST
             this.streming_title_label1.Size = new System.Drawing.Size(293, 42);
             this.streming_title_label1.TabIndex = 8;
             this.streming_title_label1.Text = "제목제목제목제목제목";
+            this.streming_title_label1.Visible = false;
             this.streming_title_label1.Click += new System.EventHandler(this.label6_Click);
             // 
             // channle_image_panel3
@@ -267,6 +272,7 @@ namespace chzzkbangonallramTEST
             this.channle_image_panel3.Name = "channle_image_panel3";
             this.channle_image_panel3.Size = new System.Drawing.Size(120, 120);
             this.channle_image_panel3.TabIndex = 7;
+            this.channle_image_panel3.Visible = false;
             this.channle_image_panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel3_MouseClick);
             // 
             // stremer_name_label3
@@ -279,6 +285,7 @@ namespace chzzkbangonallramTEST
             this.stremer_name_label3.Size = new System.Drawing.Size(185, 42);
             this.stremer_name_label3.TabIndex = 6;
             this.stremer_name_label3.Text = "스트리머 이름";
+            this.stremer_name_label3.Visible = false;
             this.stremer_name_label3.Click += new System.EventHandler(this.label5_Click);
             // 
             // channle_image_panel2
@@ -288,6 +295,7 @@ namespace chzzkbangonallramTEST
             this.channle_image_panel2.Name = "channle_image_panel2";
             this.channle_image_panel2.Size = new System.Drawing.Size(120, 120);
             this.channle_image_panel2.TabIndex = 7;
+            this.channle_image_panel2.Visible = false;
             this.channle_image_panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel2_MouseClick);
             // 
             // stremer_name_label2
@@ -300,6 +308,7 @@ namespace chzzkbangonallramTEST
             this.stremer_name_label2.Size = new System.Drawing.Size(185, 42);
             this.stremer_name_label2.TabIndex = 6;
             this.stremer_name_label2.Text = "스트리머 이름";
+            this.stremer_name_label2.Visible = false;
             this.stremer_name_label2.Click += new System.EventHandler(this.label5_Click);
             // 
             // channle_image_panel1
@@ -309,10 +318,13 @@ namespace chzzkbangonallramTEST
             this.channle_image_panel1.Name = "channle_image_panel1";
             this.channle_image_panel1.Size = new System.Drawing.Size(120, 120);
             this.channle_image_panel1.TabIndex = 7;
+            this.channle_image_panel1.Visible = false;
+            this.channle_image_panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.channle_image_panel1_Paint);
             this.channle_image_panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel1_MouseClick);
             // 
             // stremer_name_label1
             // 
+            this.stremer_name_label1.AccessibleDescription = "";
             this.stremer_name_label1.AutoSize = true;
             this.stremer_name_label1.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.stremer_name_label1.ForeColor = System.Drawing.Color.White;
@@ -321,6 +333,7 @@ namespace chzzkbangonallramTEST
             this.stremer_name_label1.Size = new System.Drawing.Size(185, 42);
             this.stremer_name_label1.TabIndex = 6;
             this.stremer_name_label1.Text = "스트리머 이름";
+            this.stremer_name_label1.Visible = false;
             this.stremer_name_label1.Click += new System.EventHandler(this.label5_Click);
             // 
             // button6
@@ -361,6 +374,19 @@ namespace chzzkbangonallramTEST
             this.label3.Size = new System.Drawing.Size(32, 42);
             this.label3.TabIndex = 0;
             this.label3.Text = "1";
+            // 
+            // howtousebtn
+            // 
+            this.howtousebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.howtousebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.howtousebtn.Font = new System.Drawing.Font("CookieRun Bold", 15F);
+            this.howtousebtn.ForeColor = System.Drawing.Color.White;
+            this.howtousebtn.Location = new System.Drawing.Point(319, 0);
+            this.howtousebtn.Name = "howtousebtn";
+            this.howtousebtn.Size = new System.Drawing.Size(32, 31);
+            this.howtousebtn.TabIndex = 3;
+            this.howtousebtn.Text = "?";
+            this.howtousebtn.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -419,6 +445,7 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Panel channle_image_panel2;
         private System.Windows.Forms.Label stremer_name_label2;
         private System.Windows.Forms.Panel no_open_live;
+        private System.Windows.Forms.Button howtousebtn;
     }
 }
 

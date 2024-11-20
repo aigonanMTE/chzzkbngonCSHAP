@@ -2,14 +2,15 @@
   "users": [
     {
       "stremerid": 1,
-      "channelName": "두니주니",
-      "openlive": false,
-      "followerCount": 18503,
-      "livetitle": "not streming",
-      "channlid": "b40ce4b4204a494a97c55c251e092424",
-      "imageurl": "notload",
-      "imagename": "notload",
-      "imagedownload": "Load"
+      "channelName": "카 알",
+      "openlive": true,
+      "followerCount": 1295,
+      "livetitle": "[1255] SNS1도안하는사람이 하는 SNS게임'페이크북' 오늘 마무리할수있낭(2부녹화합니다)",
+      "channlid": "341e9802f482e3645de371b5b788893c",
+      "imageurl": "https://nng-phinf.pstatic.net/MjAyMzEyMDhfODMg/MDAxNzAyMDMxNzA1NDEx.N0-2M76zmtALKrTMVF34efLEPLGyx7ldMwqKMmwiod0g.6ELsvaRGBMvewLsQ4PQ6wo2Yt0EXZ85Q4Jb1O7qiDdMg.PNG/ups.png",
+      "imagename": "MDAxNzAyMDMxNzA1NDEx.N0-2M76zmtALKrTMVF34efLEPLGyx7ldMwqKMmwiod0g.6ELsvaRGBMvewLsQ4PQ6wo2Yt0EXZ85Q4Jb1O7qiDdMg.PNG",
+      "imagedownload": "Load",
+      "bangonallrm": true
     }
   ]
 }

@@ -17,6 +17,7 @@ using System.Net.Http;
 using System.Drawing.Drawing2D;
 using System.Security.Policy;
 using System.Threading;
+using System.Xml;
 
 namespace chzzkbangonallramTEST
 {
@@ -57,6 +58,8 @@ namespace chzzkbangonallramTEST
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            howtousebtn.FlatStyle = FlatStyle.Flat;
+            howtousebtn.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
             button1.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
@@ -226,6 +229,34 @@ namespace chzzkbangonallramTEST
         }
 
 
+        //알람 보내기 함수
+
+        private void ShowNotification(string title, string text)
+        {
+            // NotifyIcon 객체 생성 및 설정
+            NotifyIcon notifyIcon = new NotifyIcon
+            {
+                Icon = SystemIcons.Information,
+                Visible = true,
+                BalloonTipTitle = title,
+                BalloonTipText = text
+            };
+
+            // BalloonTip 클릭 이벤트 등록
+            notifyIcon.BalloonTipClicked += (sender, e) =>
+            {
+                // 클릭 시 실행할 코드
+                
+                // notifyIcon을 더 이상 사용하지 않을 경우 Dispose로 정리
+                notifyIcon.Dispose();
+            };
+
+            // 3초 동안 알림 표시
+            notifyIcon.ShowBalloonTip(3000);
+        }
+
+
+
 
         public async Task api_get()
         {
@@ -329,6 +360,20 @@ namespace chzzkbangonallramTEST
                                 printerror($"이미지 다운로드중 에러 api요청 함수\n\n {ex}");
                             }
                         }
+
+                        //알람 보내기
+                        if (usersArray[i]["bangonallrm"].ToString() == "False")
+                        {
+                            ShowNotification(channelName, $"{channelName}님이 방송중 입니다!\n방송 제목 : {livetitle}");
+                            usersArray[i]["bangonallrm"] = true;
+                        }
+
+
+
+                    }
+                    else if (!openlive)
+                    {
+                        usersArray[i]["imagename"] = false;
                     }
 
 
@@ -597,6 +642,12 @@ namespace chzzkbangonallramTEST
             {
                 await api_get();
                 update_labe();
+                stremer_name_label1.Visible = true;
+                stremer_name_label2.Visible = true;
+                stremer_name_label3.Visible = true;
+                streming_title_label1.Visible = true;
+                streming_title_label2.Visible = true;
+                streming_title_label3.Visible = true;
                 if (sudoung)
                 {
                     AlarmLabelUpdate(18, System.Drawing.Color.Lime, "스트리머\n 목록을 업데이트\n 하였습니다", true);
@@ -680,7 +731,8 @@ namespace chzzkbangonallramTEST
                             ["channlid"] = lastPart,
                             ["imageurl"] = "notload",
                             ["imagename"] = "notload",
-                            ["imagedownload"] = "notload"
+                            ["imagedownload"] = "notload",
+                            ["bangonallrm"] = false
                         };
 
                         // "users" 배열에 새 데이터 추가
@@ -912,6 +964,11 @@ namespace chzzkbangonallramTEST
             {
                 dlete_user(0);
             }
+            else if (e.Button == MouseButtons.Left)
+            {
+                string link = $"https://chzzk.naver.com/{GetdataByName(GetUserName(thispage, 0, true), "channlid", false)}";
+                System.Diagnostics.Process.Start(link);
+            }
         }
 
         private void channle_image_panel2_MouseClick(object sender, MouseEventArgs e)
@@ -920,6 +977,11 @@ namespace chzzkbangonallramTEST
             {
                 dlete_user(1);
             }
+            else if (e.Button == MouseButtons.Left)
+            {
+                string link = $"https://chzzk.naver.com/{GetdataByName(GetUserName(thispage, 1, true), "channlid", false)}";
+                System.Diagnostics.Process.Start(link);
+            }
         }
 
         private void channle_image_panel3_MouseClick(object sender, MouseEventArgs e)
@@ -927,7 +989,16 @@ namespace chzzkbangonallramTEST
             if (e.Button == MouseButtons.Right)
             {
                 dlete_user(2);
+            }else if (e.Button == MouseButtons.Left)
+            {
+                string link = $"https://chzzk.naver.com/{GetdataByName(GetUserName(thispage, 2, true), "channlid", false)}";
+                System.Diagnostics.Process.Start(link);
             }
+        }
+
+        private void channle_image_panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
