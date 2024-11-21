@@ -38,6 +38,8 @@ namespace chzzkbangonallramTEST
         private int thispage = 1;
         private int mexpage;
         public int stremerid { get; set; }
+        private string SettingJsonDIrectory = "";
+        private JObject settingjsonData;
 
         public Form1()
         {
@@ -70,12 +72,29 @@ namespace chzzkbangonallramTEST
             JsonfileDirectory = JsonDirectory + @"\stremerlist.json";
             string jsondata = File.ReadAllText(JsonfileDirectory);
             jsonData = JObject.Parse(jsondata);
+            SettingJsonDIrectory = JsonDirectory + @"\setting.json";
+            string settingjsondata = File.ReadAllText(SettingJsonDIrectory);
+            settingjsonData = JObject.Parse(settingjsondata);
             button5.FlatStyle = FlatStyle.Flat;
             button5.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.FlatAppearance.BorderSize = 0;
+            form_panel.Visible = false;
             no_open_live.Visible = false;
             no_open_live.Location = new Point(66, 34);
+            if (settingjsonData["setting"]["firstrun"].ToString() == "True") 
+            {
+                visble_main_page(false);
+                firstsettingpage firstsettingpage = new firstsettingpage();
+                //settingjsonData["setting"]["firstrun"] = false;
+                form_panel.Size = new Size(484, 653);
+                form_panel.Location = new Point(8, 46);
+                form_panel.Visible = true;
+
+                form_panel.Controls.Clear();  // 기존 컨트롤 초기화
+                form_panel.Controls.Add(firstsettingpage);  // UserControl을 패널에 추가
+            }
+            File.WriteAllText(SettingJsonDIrectory, settingjsonData.ToString());
             await StartApiUpdateLoopAsync();
         }
 
@@ -260,6 +279,8 @@ namespace chzzkbangonallramTEST
 
 
 
+
+
         public async Task api_get()
         {
             // JSON 데이터를 파일에서 읽음
@@ -281,13 +302,15 @@ namespace chzzkbangonallramTEST
                 {
                     WebClient client = new WebClient();
 
-                    // Add specific headers
-                    client.Headers.Add("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 13.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.6286.210 Safari/537.36");
+
+
+                    // Headers 설정
+                    client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36");
                     client.Headers.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
                     client.Headers.Add("Accept-Encoding", "gzip, deflate, br, zstd");
-                    client.Headers.Add("Accept-Language", "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6");
+                    client.Headers.Add("Accept-Language", @"\r\nko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7,ja;q=0.6");
                     client.Headers.Add("Cache-Control", "max-age=0");
-                    client.Headers.Add("Cookie", "NNB=5Z6ILX3ZKMLGO; nid_inf=490044677; NID_AUT=rFmati7co9izzzJzdUlQQurkpqn3DReAtXKyDo8MSPUrfuHeV6eEBP6xri5Mb6FY; NID_JKL=LChhy6zSGaeMi+xf/3QLtuuBUgNo0t7wUo2by5VgLmk=; loungesRecentlyVisited=chzzk; recentKeyword=%5B%5D; recentKeywordInLounge=%5B%5D; BUC=68tGDuP97gonv2Tan7GEzoTZFHI5s5Gxnt6KlEDxh8o=; NID_SES=AAABn8SBvwzaqNRgW7++R1Qy/MoVUI2vJDCdVN4TKXzn4wF7/qupemhbWQoUAw3dGNx+GF4pJeRgAz/4FUewe7a5DZSFkWKjMpkk5Hc0Z1LynDBAXWK/v9fkUNk8ze4JLAnqVHGhHZdoGbO5/Mw12naoe9PvARw96FgyjoM9YwMKC5N/HQ/aViVAzIWx8uJJJJOEoAeDsX7ZNNt4lKtwKKZxKTXyIBiBX7jRN8WqK9Ur+4QG3Oq+QFAlsO5giGJD9P42HCDKUBGGBqYzrLurahQ7Q0W+iLfj0C63UGwiVNT0LCxa9EMzSKYRyNPI//21GRM2DGlbNpxCYFA9zOGVf32PYpJ/WaoKOwvzcw6DKrTwuU8+CCfKxp+vVGrImzFHz9dHCayPnXCB3TZDVzhWjcqq6/mbqXCslobMPoUYBJ+Mx5BDbp2C6a8fjXCpgFkBFris6AnM6DGlgP8IpG0dToZZg+3tptfsu1rOjqusBp7YaYB/HfRfLJsepTlcMI3fvjV9NeDybotgWbdRuOxn4jIzX7kQn5NNl0mX6qi9B8YE8L2X; ba.uuid=0");
+                    client.Headers.Add("Cookie", "NNB=5Z6ILX3ZKMLGO; nid_inf=108292949; NID_AUT=ZPmAk4BUl84amDnEBj+MmQrVGG7vQb1y6s9DZ0h6MczQhTAb2uiiQKr1eZupBbIG; NID_JKL=e4obhWPQmyH49LrdnnmSZlA2sO8fsae4xabxAJwK7jg=; NID_SES=AAABl07U7IMygpZBEtw72JMr5T/U2iRAKeHZe5fzKaPFQwrqO/mSLJZONVwh81dvnU0YKYCNEZfoHg6v+lRwgY5IsroKtmbVWtmXag63QIEHcbqvh9yXz1jT00/yLW+rRRr753F68UC75na0P/t+HfqHyQjAaqGK7Yx/45GQtACAmPtLVickcvz5rt2G7tFt3IX1mJPcr8AbkkqXIj93cSm/3t99ZQVEjdg/tlah4lQiO3YTVpu5aS5O7g/5v/KQ6VROFk0ABifcL9qlnepXK1MK1qANEJQN5PbxgKK30CCy4ptWntgbm6GyBd32l5UD5copV7v75m3VNpsZU8uR9oGs2JJy2lzgvSAPsGaSUtpEH/Y5um0xYkwfhWQKSzAImEWs0ZRm9zbDzJmutssU18W7KCAGXtYb65imbC2li/WWOU0PWcCa9F7L9nOVpy/CFN8B+7VJ5lzX41M8qatk8+EUSyIdyoqdke3CiCKE0rO+zmqsugWHg0cdLRrIqYizZWJPeHRq5/xrJQSYHhb+uB98vlgSVnMKos9x/iqyvxhzMdvW; ba.uuid=0; BUC=1cQB7frDbD7SpFbmizVRwJGOFtH6lwjLSRfHUjQ8w1M=");
                     client.Headers.Add("Priority", "u=0, i");
                     client.Headers.Add("sec-ch-ua", "\"(Not(A:Brand\";v=\"99\", \"Google Chrome\";v=\"124\", \"Chromium\";v=\"124\"");
                     client.Headers.Add("sec-ch-ua-full-version-list", "\"(Not(A:Brand\";v=\"99.0.0.0\", \"Google Chrome\";v=\"124\", \"Chromium\";v=\"124\"");
@@ -391,6 +414,22 @@ namespace chzzkbangonallramTEST
 
                     //Print(usersArray.ToString());
                     //Print($"{usersArray[i]["channelName"]} \n\n {usersArray[i]["openlive"]} \n\n {usersArray[i]["followerCount"]} \n\n {usersArray[i]["livetitle"]}");
+                }
+                catch (WebException webEx)
+                {
+                    // 서버로부터의 오류가 있을 경우 처리
+                    if (webEx.Response != null)
+                    {
+                        using (HttpWebResponse response = (HttpWebResponse)webEx.Response)
+                        {
+                            printerror($"서버 오류: {response.StatusCode}\n\n유저 해더 설정을 다시 해주세요!");
+                        }
+                    }
+                    else
+                    {
+                        // 서버가 응답하지 않거나 네트워크 오류가 발생했을 경우
+                        printerror("서버와 연결할 수 없습니다. 네트워크 상태를 확인해주세요.");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -999,6 +1038,36 @@ namespace chzzkbangonallramTEST
         }
 
         private void channle_image_panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void visble_main_page(bool visble)
+        {
+            label2.Visible = visble;
+            label4.Visible = visble;
+            textBox2.Visible = visble;
+            reload_button.Visible = visble;
+            button4.Visible = visble;
+            channle_image_panel1.Visible = visble;
+            channle_image_panel2.Visible = visble;
+            channle_image_panel3.Visible = visble;
+            stremer_name_label1.Visible = visble;
+            stremer_name_label2.Visible = visble;
+            stremer_name_label3.Visible = visble;
+            streming_title_label1.Visible = visble;
+            streming_title_label2.Visible = visble;
+            streming_title_label3.Visible = visble;
+            panel2.Visible = visble;
+        }
+
+        private void button3_MouseClick(object sender, MouseEventArgs e)
+        {
+            visble_main_page(false);
+
+        }
+
+        private void form_panel_Paint(object sender, PaintEventArgs e)
         {
 
         }
