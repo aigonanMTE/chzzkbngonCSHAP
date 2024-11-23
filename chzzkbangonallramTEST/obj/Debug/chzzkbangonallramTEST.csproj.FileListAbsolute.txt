@@ -15,4 +15,3 @@ C:\Users\a0109\Desktop\c#\chzzkbngonCSHAP\chzzkbangonallramTEST\obj\Debug\chzzkb
 C:\Users\a0109\Desktop\c#\chzzkbngonCSHAP\chzzkbangonallramTEST\obj\Debug\chzzkban.0EB41DC3.Up2Date
 C:\Users\a0109\Desktop\c#\chzzkbngonCSHAP\chzzkbangonallramTEST\obj\Debug\chzzkbangonallramTEST.exe
 C:\Users\a0109\Desktop\c#\chzzkbngonCSHAP\chzzkbangonallramTEST\obj\Debug\chzzkbangonallramTEST.pdb
-C:\Users\a0109\Desktop\c#\chzzkbngonCSHAP\chzzkbangonallramTEST\obj\Debug\chzzkbangonallramTEST.firstsettingpage.resources
