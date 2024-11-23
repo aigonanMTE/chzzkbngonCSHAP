@@ -44,7 +44,6 @@
             this.label1.Size = new System.Drawing.Size(316, 84);
             this.label1.TabIndex = 0;
             this.label1.Text = "치지직 뱅온 알람기 \r\n기본 설정을 시작 합니다";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -73,8 +72,9 @@
             // 
             this.textBox1.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.textBox1.Location = new System.Drawing.Point(80, 312);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(303, 49);
+            this.textBox1.Size = new System.Drawing.Size(303, 151);
             this.textBox1.TabIndex = 3;
             this.textBox1.Visible = false;
             // 
