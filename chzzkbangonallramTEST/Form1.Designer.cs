@@ -32,7 +32,6 @@ namespace chzzkbangonallramTEST
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.howtousebtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -43,22 +42,22 @@ namespace chzzkbangonallramTEST
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.no_open_live = new System.Windows.Forms.Panel();
             this.streming_title_label3 = new System.Windows.Forms.Label();
             this.streming_title_label2 = new System.Windows.Forms.Label();
             this.streming_title_label1 = new System.Windows.Forms.Label();
+            this.channle_image_panel3 = new System.Windows.Forms.Panel();
             this.stremer_name_label3 = new System.Windows.Forms.Label();
+            this.channle_image_panel2 = new System.Windows.Forms.Panel();
             this.stremer_name_label2 = new System.Windows.Forms.Label();
+            this.channle_image_panel1 = new System.Windows.Forms.Panel();
             this.stremer_name_label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.form_panel = new System.Windows.Forms.Panel();
-            this.no_open_live = new System.Windows.Forms.Panel();
-            this.channle_image_panel3 = new System.Windows.Forms.Panel();
-            this.channle_image_panel2 = new System.Windows.Forms.Panel();
-            this.channle_image_panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.howtousebtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -68,7 +67,6 @@ namespace chzzkbangonallramTEST
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.panel1.Controls.Add(this.howtousebtn);
-            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -78,19 +76,6 @@ namespace chzzkbangonallramTEST
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-            // 
-            // howtousebtn
-            // 
-            this.howtousebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.howtousebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.howtousebtn.Font = new System.Drawing.Font("CookieRun Bold", 15F);
-            this.howtousebtn.ForeColor = System.Drawing.Color.White;
-            this.howtousebtn.Location = new System.Drawing.Point(319, 0);
-            this.howtousebtn.Name = "howtousebtn";
-            this.howtousebtn.Size = new System.Drawing.Size(32, 31);
-            this.howtousebtn.TabIndex = 3;
-            this.howtousebtn.Text = "?";
-            this.howtousebtn.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -218,6 +203,16 @@ namespace chzzkbangonallramTEST
             this.panel3.Size = new System.Drawing.Size(483, 518);
             this.panel3.TabIndex = 7;
             // 
+            // no_open_live
+            // 
+            this.no_open_live.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.무제_1;
+            this.no_open_live.Location = new System.Drawing.Point(475, 154);
+            this.no_open_live.Name = "no_open_live";
+            this.no_open_live.Size = new System.Drawing.Size(363, 351);
+            this.no_open_live.TabIndex = 8;
+            this.no_open_live.Visible = false;
+            this.no_open_live.MouseClick += new System.Windows.Forms.MouseEventHandler(this.no_open_live_MouseClick);
+            // 
             // streming_title_label3
             // 
             this.streming_title_label3.AutoSize = true;
@@ -257,6 +252,16 @@ namespace chzzkbangonallramTEST
             this.streming_title_label1.Visible = false;
             this.streming_title_label1.Click += new System.EventHandler(this.label6_Click);
             // 
+            // channle_image_panel3
+            // 
+            this.channle_image_panel3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel3.Location = new System.Drawing.Point(17, 327);
+            this.channle_image_panel3.Name = "channle_image_panel3";
+            this.channle_image_panel3.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel3.TabIndex = 7;
+            this.channle_image_panel3.Visible = false;
+            this.channle_image_panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel3_MouseClick);
+            // 
             // stremer_name_label3
             // 
             this.stremer_name_label3.AutoSize = true;
@@ -270,6 +275,16 @@ namespace chzzkbangonallramTEST
             this.stremer_name_label3.Visible = false;
             this.stremer_name_label3.Click += new System.EventHandler(this.label5_Click);
             // 
+            // channle_image_panel2
+            // 
+            this.channle_image_panel2.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel2.Location = new System.Drawing.Point(17, 183);
+            this.channle_image_panel2.Name = "channle_image_panel2";
+            this.channle_image_panel2.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel2.TabIndex = 7;
+            this.channle_image_panel2.Visible = false;
+            this.channle_image_panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel2_MouseClick);
+            // 
             // stremer_name_label2
             // 
             this.stremer_name_label2.AutoSize = true;
@@ -282,6 +297,17 @@ namespace chzzkbangonallramTEST
             this.stremer_name_label2.Text = "스트리머 이름";
             this.stremer_name_label2.Visible = false;
             this.stremer_name_label2.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // channle_image_panel1
+            // 
+            this.channle_image_panel1.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel1.Location = new System.Drawing.Point(17, 37);
+            this.channle_image_panel1.Name = "channle_image_panel1";
+            this.channle_image_panel1.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel1.TabIndex = 7;
+            this.channle_image_panel1.Visible = false;
+            this.channle_image_panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.channle_image_panel1_Paint);
+            this.channle_image_panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel1_MouseClick);
             // 
             // stremer_name_label1
             // 
@@ -344,60 +370,18 @@ namespace chzzkbangonallramTEST
             this.form_panel.TabIndex = 8;
             this.form_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.form_panel_Paint);
             // 
-            // no_open_live
+            // howtousebtn
             // 
-            this.no_open_live.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.무제_1;
-            this.no_open_live.Location = new System.Drawing.Point(475, 154);
-            this.no_open_live.Name = "no_open_live";
-            this.no_open_live.Size = new System.Drawing.Size(363, 351);
-            this.no_open_live.TabIndex = 8;
-            this.no_open_live.Visible = false;
-            this.no_open_live.MouseClick += new System.Windows.Forms.MouseEventHandler(this.no_open_live_MouseClick);
-            // 
-            // channle_image_panel3
-            // 
-            this.channle_image_panel3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
-            this.channle_image_panel3.Location = new System.Drawing.Point(17, 327);
-            this.channle_image_panel3.Name = "channle_image_panel3";
-            this.channle_image_panel3.Size = new System.Drawing.Size(120, 120);
-            this.channle_image_panel3.TabIndex = 7;
-            this.channle_image_panel3.Visible = false;
-            this.channle_image_panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel3_MouseClick);
-            // 
-            // channle_image_panel2
-            // 
-            this.channle_image_panel2.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
-            this.channle_image_panel2.Location = new System.Drawing.Point(17, 183);
-            this.channle_image_panel2.Name = "channle_image_panel2";
-            this.channle_image_panel2.Size = new System.Drawing.Size(120, 120);
-            this.channle_image_panel2.TabIndex = 7;
-            this.channle_image_panel2.Visible = false;
-            this.channle_image_panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel2_MouseClick);
-            // 
-            // channle_image_panel1
-            // 
-            this.channle_image_panel1.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
-            this.channle_image_panel1.Location = new System.Drawing.Point(17, 37);
-            this.channle_image_panel1.Name = "channle_image_panel1";
-            this.channle_image_panel1.Size = new System.Drawing.Size(120, 120);
-            this.channle_image_panel1.TabIndex = 7;
-            this.channle_image_panel1.Visible = false;
-            this.channle_image_panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.channle_image_panel1_Paint);
-            this.channle_image_panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel1_MouseClick);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.button3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.제1목없음;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("굴림", 20F);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(357, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(32, 31);
-            this.button3.TabIndex = 3;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button3_MouseClick);
+            this.howtousebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.howtousebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.howtousebtn.Font = new System.Drawing.Font("CookieRun Bold", 15F);
+            this.howtousebtn.ForeColor = System.Drawing.Color.White;
+            this.howtousebtn.Location = new System.Drawing.Point(357, 0);
+            this.howtousebtn.Name = "howtousebtn";
+            this.howtousebtn.Size = new System.Drawing.Size(32, 31);
+            this.howtousebtn.TabIndex = 3;
+            this.howtousebtn.Text = "?";
+            this.howtousebtn.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -443,7 +427,6 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label stremer_name_label1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
@@ -457,8 +440,8 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Panel channle_image_panel2;
         private System.Windows.Forms.Label stremer_name_label2;
         private System.Windows.Forms.Panel no_open_live;
-        private System.Windows.Forms.Button howtousebtn;
         private System.Windows.Forms.Panel form_panel;
+        private System.Windows.Forms.Button howtousebtn;
     }
 }
 
