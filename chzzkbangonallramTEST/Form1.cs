@@ -20,6 +20,7 @@ using System.Threading;
 using System.Xml;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+using System.Security.Authentication.ExtendedProtection;
 
 namespace chzzkbangonallramTEST
 {
@@ -360,6 +361,8 @@ namespace chzzkbangonallramTEST
                                     // Extract liveTitle from the JSON structure
                                     liveTitle = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveTitle"]?.ToString();
                                     usersArray[i]["livetitle"] = liveTitle;
+                                    string liveImageUrl = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveImageUrl"].ToString();//liveImageUrl
+                                    Print(liveImageUrl);
                                 }
                             }
                             else
@@ -383,6 +386,8 @@ namespace chzzkbangonallramTEST
                             {
                                 usersArray[i]["imagedownload"] = true;
                             }
+
+
                         }
                     }
                     catch (Exception ex) 
@@ -480,6 +485,7 @@ namespace chzzkbangonallramTEST
         }
 
         public List<string> openlivestremername = new List<string>();
+
         public List<string> pageforstremersname = new List<string>(); // 페이지별 스트리머 이름을 저장할 리스트
 
         private void update_labe()
