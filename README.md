@@ -1,6 +1,6 @@
 # chzzkbngonCSHAP
  공식 서비스 서버 : https://discord.gg/h7vWQR9VH4
- dm mteword
+ DISCORD mteword
 
 만드는 중입니다
 
