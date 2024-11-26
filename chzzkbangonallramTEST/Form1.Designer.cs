@@ -206,8 +206,10 @@ namespace chzzkbangonallramTEST
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.no_open_live);
             this.panel3.Controls.Add(this.button5);
+            this.panel3.Controls.Add(this.button6);
+            this.panel3.Controls.Add(this.no_open_live);
+            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.back_ground_pannel3);
             this.panel3.Controls.Add(this.back_ground_pannel2);
             this.panel3.Controls.Add(this.back_ground_pannel1);
@@ -232,7 +234,7 @@ namespace chzzkbangonallramTEST
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold);
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(264, 466);
+            this.button5.Location = new System.Drawing.Point(264, 463);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(37, 42);
             this.button5.TabIndex = 4;
@@ -243,14 +245,12 @@ namespace chzzkbangonallramTEST
             // back_ground_pannel3
             // 
             this.back_ground_pannel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.back_ground_pannel3.Controls.Add(this.label3);
-            this.back_ground_pannel3.Controls.Add(this.button6);
             this.back_ground_pannel3.Controls.Add(this.channle_image_panel3);
             this.back_ground_pannel3.Controls.Add(this.streming_title_label3);
             this.back_ground_pannel3.Controls.Add(this.stremer_name_label3);
             this.back_ground_pannel3.Location = new System.Drawing.Point(3, 338);
             this.back_ground_pannel3.Name = "back_ground_pannel3";
-            this.back_ground_pannel3.Size = new System.Drawing.Size(477, 177);
+            this.back_ground_pannel3.Size = new System.Drawing.Size(477, 180);
             this.back_ground_pannel3.TabIndex = 9;
             // 
             // channle_image_panel3
@@ -269,7 +269,7 @@ namespace chzzkbangonallramTEST
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold);
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(180, 125);
+            this.button6.Location = new System.Drawing.Point(183, 463);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(37, 42);
             this.button6.TabIndex = 5;
@@ -308,7 +308,7 @@ namespace chzzkbangonallramTEST
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(223, 128);
+            this.label3.Location = new System.Drawing.Point(226, 463);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 42);
             this.label3.TabIndex = 0;
@@ -455,6 +455,7 @@ namespace chzzkbangonallramTEST
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.back_ground_pannel3.ResumeLayout(false);
             this.back_ground_pannel3.PerformLayout();
             this.back_ground_pannel2.ResumeLayout(false);

@@ -19,7 +19,7 @@
       "stremerid": 3,
       "channelName": "계춘회",
       "openlive": true,
-      "followerCount": 22281,
+      "followerCount": 22282,
       "livetitle": "[봉누도] 억까당해서 슬픈아줌마..",
       "channlid": "a9a343510e132ea3026ff3cf682820b5",
       "imageurl": "https://nng-phinf.pstatic.net/MjAyNDA1MDRfMjg1/MDAxNzE0NzY1NTMxNDAx.Cu0QBMb3zApNUjLVdlBezAG3mBYc9PlLSLHTov5kxJwg.f4uIyC0XoMvV6xWe20ILuT1qUY2RDv6LhcWLQwwVY3sg.PNG/vts-2024-05-04_04h42_00.png",
@@ -50,8 +50,8 @@
       "stremerid": 6,
       "channelName": "따효니",
       "openlive": true,
-      "followerCount": 123070,
-      "livetitle": "작혼 아이마스 콜라보 가챠 ㄱㄱ",
+      "followerCount": 123067,
+      "livetitle": "바람의나라 클래식 솬 말 고개 마비 힐 양념해줄 '동료' 구함",
       "channlid": "0dad8baf12a436f722faa8e5001c5011",
       "imageurl": "https://nng-phinf.pstatic.net/MjAyNDExMThfNzYg/MDAxNzMxOTA3NTE5NzU0.zvHAotVc45UVtE8g5ZVemVSA9crW4BE6-JwLT43IKMcg.dobFDuL95wPxb1DODzAGDJ1JjpfdIf8APA4OB6xcUp8g.PNG/%EB%94%B0%ED%9A%A8%EB%8B%88_%ED%94%84%EC%82%AC_%282%29.png",
       "imagename": "MDAxNzMxOTA3NTE5NzU0.zvHAotVc45UVtE8g5ZVemVSA9crW4BE6-JwLT43IKMcg.dobFDuL95wPxb1DODzAGDJ1JjpfdIf8APA4OB6xcUp8g.PNG",
@@ -74,9 +74,9 @@
     {
       "stremerid": 8,
       "channelName": "감 규 리",
-      "openlive": true,
-      "followerCount": 11026,
-      "livetitle": "봉누도 간호사 첫출근❤️(⩌⩊⩌)",
+      "openlive": false,
+      "followerCount": 11032,
+      "livetitle": "방송중 아님",
       "channlid": "3b3fe69e8b274ccaa4fd56ce9680a1f5",
       "imageurl": "https://nng-phinf.pstatic.net/MjAyMzEyMTlfMjE1/MDAxNzAyOTU0OTA5MTc5.n-n5os1YVbTaUePzUE2R4QBZFIIi2ao4o5kxW7VxIvUg.AhJYlbJIaNBHqAhVI2DfK92XDDR6-sx6-aqzEatfHB0g.PNG/49.png",
       "imagename": "MDAxNzAyOTU0OTA5MTc5.n-n5os1YVbTaUePzUE2R4QBZFIIi2ao4o5kxW7VxIvUg.AhJYlbJIaNBHqAhVI2DfK92XDDR6-sx6-aqzEatfHB0g.PNG",
@@ -100,7 +100,7 @@
       "stremerid": 10,
       "channelName": "RED레드",
       "openlive": false,
-      "followerCount": 5807,
+      "followerCount": 5811,
       "livetitle": "방송중 아님",
       "channlid": "a96cea2d2c39cec636ba8170c66a0510",
       "imageurl": "https://nng-phinf.pstatic.net/MjAyNDA4MjVfMjQx/MDAxNzI0NTcxMjI0MTcy.YBVL9l88mYaicPAMPdFQX9MNsb8nKEOPjbN7AF5XQTIg.KNA0WpjZZciFFEykkBqY-DWgIW3O_YPNwDM3ZRFiOLwg.PNG/%EB%91%90%EC%83%81%2B%EC%BD%94%ED%8A%B8%28%EC%9E%A5%EB%B0%9C%29.png",
@@ -108,19 +108,6 @@
       "imagedownload": true,
       "bangonallrm": false,
       "liveImageUrl": "https://livecloud-thumb.akamaized.net/chzzk/livecloud/KR/stream/31686096/live/9200693/record/34249122/thumbnail/image_480.jpg"
-    },
-    {
-      "stremerid": 11,
-      "channelName": "빅헤드",
-      "openlive": true,
-      "followerCount": 75307,
-      "livetitle": "빅헤드 ( 새로운 삶 )",
-      "channlid": "ca1850b2eceb7f86146695fd9bb9cefc",
-      "imageurl": "https://nng-phinf.pstatic.net/MjAyMzEyMTlfMzYg/MDAxNzAyOTcwODY1OTUy.1hHkqzH-zyEhyW2EJNfj1q6r7XTDeQNNqL_owQQ6AFwg.mCjDaHbdF0jjfhB2PvFuFJLxL9jQ-PV0oSLLDRXoGLUg.GIF/popHEAD.gif",
-      "imagename": "ERROR-none-file.png",
-      "imagedownload": true,
-      "bangonallrm": false,
-      "liveImageUrl": "https://livecloud-thumb.akamaized.net/chzzk/livecloud/KR/stream/26448554/live/9201612/record/34250261/thumbnail/image_480.jpg"
     }
   ]
 }

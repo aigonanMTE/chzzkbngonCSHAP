@@ -597,8 +597,6 @@ namespace chzzkbangonallramTEST
             channle_image_panel3.Visible = true;
             channle_image_panel2.Visible = true;
             channle_image_panel1.Visible = true;
-            button6.Visible = true;
-            label3.Visible = true;
 
 
             if (GetUserName(thispage, 0, true) == null)
@@ -660,6 +658,7 @@ namespace chzzkbangonallramTEST
                     await LoadLiveImageAsync(GetUserName(thispage, 2, true), info["liveImageUrl"].ToString());
                 }
             }
+
 
 
             // 스트리머 이름 라벨 업데이트
