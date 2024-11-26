@@ -61,6 +61,7 @@ namespace chzzkbangonallramTEST
             this.stremer_name_label1 = new System.Windows.Forms.Label();
             this.form_panel = new System.Windows.Forms.Panel();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.opensetting = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.back_ground_pannel3.SuspendLayout();
@@ -72,6 +73,7 @@ namespace chzzkbangonallramTEST
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.panel1.Controls.Add(this.opensetting);
             this.panel1.Controls.Add(this.howtousebtn);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
@@ -89,7 +91,7 @@ namespace chzzkbangonallramTEST
             this.howtousebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.howtousebtn.Font = new System.Drawing.Font("CookieRun Bold", 15F);
             this.howtousebtn.ForeColor = System.Drawing.Color.White;
-            this.howtousebtn.Location = new System.Drawing.Point(357, 0);
+            this.howtousebtn.Location = new System.Drawing.Point(308, 0);
             this.howtousebtn.Name = "howtousebtn";
             this.howtousebtn.Size = new System.Drawing.Size(32, 31);
             this.howtousebtn.TabIndex = 3;
@@ -241,11 +243,11 @@ namespace chzzkbangonallramTEST
             // back_ground_pannel3
             // 
             this.back_ground_pannel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.back_ground_pannel3.Controls.Add(this.channle_image_panel3);
+            this.back_ground_pannel3.Controls.Add(this.label3);
             this.back_ground_pannel3.Controls.Add(this.button6);
+            this.back_ground_pannel3.Controls.Add(this.channle_image_panel3);
             this.back_ground_pannel3.Controls.Add(this.streming_title_label3);
             this.back_ground_pannel3.Controls.Add(this.stremer_name_label3);
-            this.back_ground_pannel3.Controls.Add(this.label3);
             this.back_ground_pannel3.Location = new System.Drawing.Point(3, 338);
             this.back_ground_pannel3.Name = "back_ground_pannel3";
             this.back_ground_pannel3.Size = new System.Drawing.Size(477, 177);
@@ -267,7 +269,7 @@ namespace chzzkbangonallramTEST
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold);
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(180, 128);
+            this.button6.Location = new System.Drawing.Point(180, 125);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(37, 42);
             this.button6.TabIndex = 5;
@@ -417,6 +419,19 @@ namespace chzzkbangonallramTEST
             this.form_panel.TabIndex = 8;
             this.form_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.form_panel_Paint);
             // 
+            // opensetting
+            // 
+            this.opensetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.opensetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.opensetting.Font = new System.Drawing.Font("CookieRun Bold", 15F);
+            this.opensetting.ForeColor = System.Drawing.Color.White;
+            this.opensetting.Image = global::chzzkbangonallramTEST.Properties.Resources.제1목없음;
+            this.opensetting.Location = new System.Drawing.Point(357, 0);
+            this.opensetting.Name = "opensetting";
+            this.opensetting.Size = new System.Drawing.Size(32, 31);
+            this.opensetting.TabIndex = 3;
+            this.opensetting.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -484,6 +499,7 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Panel back_ground_pannel1;
         private System.Windows.Forms.Panel back_ground_pannel3;
         private System.Windows.Forms.Panel back_ground_pannel2;
+        private System.Windows.Forms.Button opensetting;
     }
 }
 

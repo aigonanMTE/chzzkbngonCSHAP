@@ -83,6 +83,8 @@ namespace chzzkbangonallramTEST
             button5.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.FlatAppearance.BorderSize = 0;
+            opensetting.FlatStyle = FlatStyle.Flat;
+            opensetting.FlatAppearance.BorderSize = 0;
             form_panel.Visible = false;
             no_open_live.Visible = false;
             no_open_live.Location = new Point(66, 34);
@@ -360,11 +362,11 @@ namespace chzzkbangonallramTEST
                                     JObject channel_live_detail = JObject.Parse(response);
                                     liveTitle = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveTitle"]?.ToString();
                                     usersArray[i]["livetitle"] = liveTitle;
-                                    //string templateUrl = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveImageUrl"].ToString(); // liveImageUrl
-                                    //int type = 480;
+                                    string templateUrl = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveImageUrl"].ToString(); // liveImageUrl
+                                    int type = 480;
 
-                                    //string liveImageUrl = templateUrl.Replace("{type}", type.ToString());
-                                    //usersArray[i]["liveImageUrl"] = liveImageUrl;
+                                    string liveImageUrl = templateUrl.Replace("{type}", type.ToString());
+                                    usersArray[i]["liveImageUrl"] = liveImageUrl;
                                     //// 새로운 함수 호출
                                     //await LoadLiveImageAsync(channelName, liveImageUrl);
                                 }
@@ -406,28 +408,28 @@ namespace chzzkbangonallramTEST
             }
         }
 
-        //private async Task LoadLiveImageAsync(string channelName, string liveImageUrl)
-        //{
-        //    try
-        //    {
-        //        if (channelName == stremer_name_label1.Text)
-        //        {
-        //            await LoadImageAsync(liveImageUrl, 1);
-        //        }
-        //        else if (channelName == stremer_name_label2.Text)
-        //        {
-        //            await LoadImageAsync(liveImageUrl, 2);
-        //        }
-        //        else if (channelName == stremer_name_label3.Text)
-        //        {
-        //            await LoadImageAsync(liveImageUrl, 3);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        printerror($"LoadLiveImageAsync 함수에서 오류 발생 \n {ex}");
-        //    }
-        //}
+        private async Task LoadLiveImageAsync(string channelName, string liveImageUrl)
+        {
+            try
+            {
+                if (channelName == stremer_name_label1.Text)
+                {
+                    await LoadImageAsync(liveImageUrl, 1);
+                }
+                else if (channelName == stremer_name_label2.Text)
+                {
+                    await LoadImageAsync(liveImageUrl, 2);
+                }
+                else if (channelName == stremer_name_label3.Text)
+                {
+                    await LoadImageAsync(liveImageUrl, 3);
+                }
+            }
+            catch (Exception ex)
+            {
+                printerror($"LoadLiveImageAsync 함수에서 오류 발생 \n {ex}");
+            }
+        }
 
 
 
@@ -549,7 +551,9 @@ namespace chzzkbangonallramTEST
 
         public List<string> pageforstremersname = new List<string>(); // 페이지별 스트리머 이름을 저장할 리스트
 
-        private void update_labe()
+
+
+        private async void update_labe()
         {
             // JSON 데이터에서 "users" 항목을 추출
             JArray usersArray = (JArray)jsonData["users"];
@@ -564,6 +568,7 @@ namespace chzzkbangonallramTEST
                 if (usersArray[i]["openlive"].ToString().Equals("True", StringComparison.OrdinalIgnoreCase))
                 {
                     openlivestremername.Add(usersArray[i]["channelName"].ToString());
+
                 }
             }
 
@@ -592,7 +597,49 @@ namespace chzzkbangonallramTEST
             channle_image_panel3.Visible = true;
             channle_image_panel2.Visible = true;
             channle_image_panel1.Visible = true;
+            button6.Visible = true;
+            label3.Visible = true;
 
+
+            if (GetUserName(thispage, 0, true) == null)
+            {
+                channle_image_panel1.Visible = false;
+                no_open_live.Visible = true;
+                back_ground_pannel1.Visible = false;
+
+            }
+            else
+            {
+                back_ground_pannel1.Visible = true;
+                var info = usersArray.FirstOrDefault(u => u["channelName"].ToString() == GetUserName(thispage, 0, true));
+                Print($"{GetUserName(thispage, 0, true)} \n {info["liveImageUrl"].ToString()}");
+                if (info != null)
+                {
+                    //Print($"{GetUserName(thispage, 0, true)}, {info["liveImageUrl"].ToString()}");
+                    await LoadLiveImageAsync(GetUserName(thispage, 0, true), info["liveImageUrl"].ToString());
+                }
+            }
+
+
+            if (GetUserName(thispage, 1, true) == null)
+            {
+                channle_image_panel2.Visible = false;
+                no_open_live.Visible = false;
+                back_ground_pannel2.Visible = false;
+
+            }
+            else
+            {
+
+                back_ground_pannel2.Visible = true;
+                var info = usersArray.FirstOrDefault(u => u["channelName"].ToString() == GetUserName(thispage, 1, true));
+                Print($"{GetUserName(thispage, 1, true)} \n {info["liveImageUrl"].ToString()}");
+                if (info != null)
+                {
+                    //Print($"{GetUserName(thispage, 1, true)}, {info["liveImageUrl"].ToString()}");
+                    await LoadLiveImageAsync(GetUserName(thispage, 1, true), info["liveImageUrl"].ToString());
+                }
+            }
 
 
             // 온라인 아닌 스트리머 숨기기
@@ -600,25 +647,19 @@ namespace chzzkbangonallramTEST
             {
                 channle_image_panel3.Visible = false;
                 no_open_live.Visible = false;
-                back_ground_pannel3.BackgroundImage = null;
+                back_ground_pannel3.Visible = false;
             }
-            if (GetUserName(thispage, 1, true) == null)
+            else
             {
-                channle_image_panel2.Visible = false;
-                no_open_live.Visible = false;
-                back_ground_pannel2.BackgroundImage = null;
-
+                back_ground_pannel2.Visible = true;
+                var info = usersArray.FirstOrDefault(u => u["channelName"].ToString() == GetUserName(thispage, 2, true));
+                Print($"{GetUserName(thispage, 2, true)} \n {info["liveImageUrl"].ToString()}");
+                if (info != null)
+                { 
+                    //Print($"{GetUserName(thispage, 2, true)}, {info["liveImageUrl"].ToString()}");
+                    await LoadLiveImageAsync(GetUserName(thispage, 2, true), info["liveImageUrl"].ToString());
+                }
             }
-            if (GetUserName(thispage, 0, true) == null)
-            {
-                channle_image_panel1.Visible = false;
-                no_open_live.Visible = true;
-                back_ground_pannel1.BackgroundImage = null;
-
-            }
-
-
-
 
 
             // 스트리머 이름 라벨 업데이트
@@ -642,6 +683,7 @@ namespace chzzkbangonallramTEST
 
             if (GetdataByName(GetUserName(thispage, 1, false), "imagename", false) != null)
             {
+                //Print($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 1, true), "imagename", false)}");
                 channle_image_panel2.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 1, true), "imagename", false)}");
                 channle_image_panel2.BackgroundImageLayout = ImageLayout.Stretch;
             }
@@ -650,6 +692,7 @@ namespace chzzkbangonallramTEST
                 channle_image_panel3.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 2, false), "imagename", false)}");
                 channle_image_panel3.BackgroundImageLayout = ImageLayout.Stretch;
             }
+
         }
 
 
@@ -975,7 +1018,7 @@ namespace chzzkbangonallramTEST
             System.Diagnostics.Process.Start("https://discord.gg/h7vWQR9VH4");
         }
 
-        private async void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
             if (thispage <= mexpage - 1)
             {
@@ -987,7 +1030,7 @@ namespace chzzkbangonallramTEST
             }
         }
 
-        private async void button6_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
             if (thispage >= 2)
             {
