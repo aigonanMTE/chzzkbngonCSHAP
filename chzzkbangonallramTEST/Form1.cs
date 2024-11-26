@@ -358,11 +358,15 @@ namespace chzzkbangonallramTEST
                                 if (response != null)
                                 {
                                     JObject channel_live_detail = JObject.Parse(response);
-                                    // Extract liveTitle from the JSON structure
                                     liveTitle = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveTitle"]?.ToString();
                                     usersArray[i]["livetitle"] = liveTitle;
-                                    string liveImageUrl = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveImageUrl"].ToString();//liveImageUrl
-                                    Print(liveImageUrl);
+                                    //string templateUrl = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveImageUrl"].ToString(); // liveImageUrl
+                                    //int type = 480;
+
+                                    //string liveImageUrl = templateUrl.Replace("{type}", type.ToString());
+                                    //usersArray[i]["liveImageUrl"] = liveImageUrl;
+                                    //// 새로운 함수 호출
+                                    //await LoadLiveImageAsync(channelName, liveImageUrl);
                                 }
                             }
                             else
@@ -370,6 +374,7 @@ namespace chzzkbangonallramTEST
                                 liveTitle = "방송중 아님";
                                 usersArray[i]["livetitle"] = liveTitle;
                             }
+
 
                             usersArray[i]["channelName"] = channelName;
                             usersArray[i]["followerCount"] = followerCount;
@@ -401,6 +406,29 @@ namespace chzzkbangonallramTEST
             }
         }
 
+        //private async Task LoadLiveImageAsync(string channelName, string liveImageUrl)
+        //{
+        //    try
+        //    {
+        //        if (channelName == stremer_name_label1.Text)
+        //        {
+        //            await LoadImageAsync(liveImageUrl, 1);
+        //        }
+        //        else if (channelName == stremer_name_label2.Text)
+        //        {
+        //            await LoadImageAsync(liveImageUrl, 2);
+        //        }
+        //        else if (channelName == stremer_name_label3.Text)
+        //        {
+        //            await LoadImageAsync(liveImageUrl, 3);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        printerror($"LoadLiveImageAsync 함수에서 오류 발생 \n {ex}");
+        //    }
+        //}
+
 
 
 
@@ -424,6 +452,39 @@ namespace chzzkbangonallramTEST
 
             string filePath = Path.Combine("Images", filename);
             File.WriteAllBytes(filePath, imageBytes);
+        }
+
+        private async Task LoadImageAsync(string url, int page)
+        {
+            using HttpClient client = new HttpClient();
+            try
+            {
+                byte[] imageData = await client.GetByteArrayAsync(url);
+                using MemoryStream ms = new MemoryStream(imageData);
+                Image image = Image.FromStream(ms);
+
+                if (page == 1)
+                {
+                    // `BackgroundImage`에 이미지를 설정
+                    back_ground_pannel1.BackgroundImage = image;
+                    back_ground_pannel1.BackgroundImageLayout = ImageLayout.Stretch; // 이미지 레이아웃 설정 (Stretch, Tile 등)
+                }
+                if (page == 2)
+                {
+                    back_ground_pannel2.BackgroundImage = image;
+                    back_ground_pannel2.BackgroundImageLayout = ImageLayout.Stretch; // 이미지 레이아웃 설정 (Stretch, Tile 등)
+                }
+                if(page == 3)
+                {
+                    back_ground_pannel3.BackgroundImage = image;
+                    back_ground_pannel3.BackgroundImageLayout = ImageLayout.Stretch; // 이미지 레이아웃 설정 (Stretch, Tile 등)
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"이미지를 가져오는 중 오류가 발생했습니다: {ex.Message}");
+            }
         }
 
 
@@ -539,17 +600,24 @@ namespace chzzkbangonallramTEST
             {
                 channle_image_panel3.Visible = false;
                 no_open_live.Visible = false;
+                back_ground_pannel3.BackgroundImage = null;
             }
             if (GetUserName(thispage, 1, true) == null)
             {
                 channle_image_panel2.Visible = false;
                 no_open_live.Visible = false;
+                back_ground_pannel2.BackgroundImage = null;
+
             }
             if (GetUserName(thispage, 0, true) == null)
             {
                 channle_image_panel1.Visible = false;
                 no_open_live.Visible = true;
+                back_ground_pannel1.BackgroundImage = null;
+
             }
+
+
 
 
 
@@ -596,6 +664,7 @@ namespace chzzkbangonallramTEST
                 {
                     while (!_cts.Token.IsCancellationRequested)
                     {
+                        update_labe();
                         api_update_labe(false);
                         await Task.Delay(TimeSpan.FromMinutes(1), _cts.Token);
                     }
@@ -755,7 +824,8 @@ namespace chzzkbangonallramTEST
                             ["imageurl"] = "notload",
                             ["imagename"] = "notload",
                             ["imagedownload"] = "notload",
-                            ["bangonallrm"] = false
+                            ["bangonallrm"] = false,
+                            ["liveImageUrl"] = "none"
                         };
 
                         // "users" 배열에 새 데이터 추가
@@ -905,22 +975,25 @@ namespace chzzkbangonallramTEST
             System.Diagnostics.Process.Start("https://discord.gg/h7vWQR9VH4");
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private async void button5_Click(object sender, EventArgs e)
         {
             if (thispage <= mexpage - 1)
             {
                 thispage++;
                 label3.Text = thispage.ToString();
+                //현제 페이지 내 3 중 1스트리머의 이름 넣기 , 그 스트리머의 라이브 이미지 url값 넣기
+                //LoadLiveImageAsync();
                 update_labe();
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private async void button6_Click(object sender, EventArgs e)
         {
             if (thispage >= 2)
             {
                 thispage--;
                 label3.Text = thispage.ToString();
+                
                 update_labe();
             }
         }
@@ -1050,6 +1123,11 @@ namespace chzzkbangonallramTEST
         }
 
         private void form_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void channle_image_panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
