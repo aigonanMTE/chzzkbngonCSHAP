@@ -21,6 +21,7 @@ using System.Xml;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Security.Authentication.ExtendedProtection;
+using System.Windows.Forms.VisualStyles;
 
 namespace chzzkbangonallramTEST
 {
@@ -61,9 +62,11 @@ namespace chzzkbangonallramTEST
         }
 
 
-
+        private NotifyIcon notifyIcon;
         private async void Form1_Load(object sender, EventArgs e)
         {
+            
+
             howtousebtn.FlatStyle = FlatStyle.Flat;
             howtousebtn.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
@@ -85,16 +88,53 @@ namespace chzzkbangonallramTEST
             button6.FlatAppearance.BorderSize = 0;
             opensetting.FlatStyle = FlatStyle.Flat;
             opensetting.FlatAppearance.BorderSize = 0;
-            form_panel.Visible = false;
             no_open_live.Visible = false;
             no_open_live.Location = new Point(66, 34);
             imagedirectory = ThisDirectory + @"\images";
+            //File.WriteAllText(SettingJsonDIrectory, settingjsonData.ToString());
+
+            set_label_color();
+
+            // NotifyIcon 설정
+            notifyIcon = new NotifyIcon
+            {
+                Icon = SystemIcons.Application, // 아이콘 설정
+                Visible = true,
+                Text = "치지직뱅온알람"
+            };
+
+            // NotifyIcon 더블 클릭 이벤트
+            notifyIcon.DoubleClick += (s, e) =>
+            {
+                // 트레이에서 더블 클릭 시 창 보이기
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+            };
+
             await StartApiUpdateLoopAsync();
+        }
+
+        public void set_label_color()
+        {
+            string settingjsondata = File.ReadAllText(SettingJsonDIrectory);
+            settingjsonData = JObject.Parse(settingjsondata);
+            var a = (int)settingjsonData["setting"]["a"];
+            var b = (int)settingjsonData["setting"]["b"];
+            var g = (int)settingjsonData["setting"]["g"];
+            var r = (int)settingjsonData["setting"]["r"];
+
+            stremer_name_label1.ForeColor = Color.FromArgb(a, r, g, b);
+            stremer_name_label2.ForeColor = Color.FromArgb(a, r, g, b);
+            stremer_name_label3.ForeColor = Color.FromArgb(a, r, g, b);
+
+            streming_title_label1.ForeColor = Color.FromArgb(a, r, g, b);
+            streming_title_label2.ForeColor = Color.FromArgb(a, r, g, b);
+            streming_title_label3.ForeColor = Color.FromArgb(a, r, g, b);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
         }
 
         private Point mouseLocation;  // 클래스 수준에서 선언
@@ -317,92 +357,91 @@ namespace chzzkbangonallramTEST
             // users 배열 가져오기
             JArray usersArray = (JArray)data1["users"];
 
-            if (settingjsonData["setting"]["firstrun"].ToString() != "True")
+            for (int i = 0; i < usersArray.Count; i++)
             {
-                for (int i = 0; i < usersArray.Count; i++)
+                try
                 {
-                    try
+                    // 채널 데이터 가져오기
+                    string response = await SendGetRequest("https://api.chzzk.naver.com/service/v1/channels/" + usersArray[i]["channlid"]);
+                    if (response != null)
                     {
-                        // 채널 데이터 가져오기
-                        string response = await SendGetRequest("https://api.chzzk.naver.com/service/v1/channels/" + usersArray[i]["channlid"]);
-                        if (response != null)
+                        string liveTitle;
+                        // JSON 파싱
+                        JObject channle_basic_data = JObject.Parse(response);
+                        string channelName = channle_basic_data["content"]["channelName"].ToString();
+                        int followerCount = (int)channle_basic_data["content"]["followerCount"];
+                        bool openLive = (bool)channle_basic_data["content"]["openLive"];
+                        string channelImageUrl = channle_basic_data["content"]["channelImageUrl"].ToString();
+                        string channelImagename;
+
+                        // 정규식을 사용하여 이미지 URL에서 파일명 추출
+                        string fileName = $"{usersArray[i]["channlid"]}.png";
+
+                        if (fileName != null)
                         {
-                            string liveTitle;
-                            // JSON 파싱
-                            JObject channle_basic_data = JObject.Parse(response);
-                            string channelName = channle_basic_data["content"]["channelName"].ToString();
-                            int followerCount = (int)channle_basic_data["content"]["followerCount"];
-                            bool openLive = (bool)channle_basic_data["content"]["openLive"];
-                            string channelImageUrl = channle_basic_data["content"]["channelImageUrl"].ToString();
-                            string channelImagename;
+                            channelImagename = fileName;
+                            //Print("Extracted part: " + extractedPart);
+                        }
+                        else
+                        {
+                            channelImagename = "ERROR-none-file.png";
+                        }
 
-                            // 정규식을 사용하여 이미지 URL에서 파일명 추출
-                            string pattern = @"\/([^\/]+\.PNG)";
-                            Regex regex = new Regex(pattern);
-                            Match match = regex.Match(channelImageUrl);
-                            //Print(match.Groups[1].Value);
+                        //Print($"체널 이름 : {channelName}\n팔로워 카운트 : {followerCount}\n방송 여부 : {openLive}\n체널 이미지 url : {channelImageUrl}\n체널 이미지 이름 : {channelImagename}");
 
-                            if (match.Success)
+                        if (openLive)
+                        {
+                            response = await SendGetRequest("https://api.chzzk.naver.com/service/v1/channels/" + usersArray[i]["channlid"] + "/data?fields=banners,topExposedVideos,missionDonationChannelHomeExposure");
+                            if (response != null)
                             {
-                                channelImagename = match.Groups[1].Value;
-                                //Print("Extracted part: " + extractedPart);
-                            }
-                            else
-                            {
-                                channelImagename = "ERROR-none-file.png";
-                            }
+                                JObject channel_live_detail = JObject.Parse(response);
+                                liveTitle = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveTitle"]?.ToString();
+                                usersArray[i]["livetitle"] = liveTitle;
+                                string templateUrl = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveImageUrl"].ToString(); // liveImageUrl
+                                int type = 480;
 
-                            //Print($"체널 이름 : {channelName}\n팔로워 카운트 : {followerCount}\n방송 여부 : {openLive}\n체널 이미지 url : {channelImageUrl}\n체널 이미지 이름 : {channelImagename}");
-
-                            if (openLive)
-                            {
-                                response = await SendGetRequest("https://api.chzzk.naver.com/service/v1/channels/" + usersArray[i]["channlid"] + "/data?fields=banners,topExposedVideos,missionDonationChannelHomeExposure");
-                                if (response != null)
+                                string liveImageUrl = templateUrl.Replace("{type}", type.ToString());
+                                usersArray[i]["liveImageUrl"] = liveImageUrl;
+                                //// 새로운 함수 호출
+                                //await LoadLiveImageAsync(channelName, liveImageUrl);
+                                if (!(bool)usersArray[i]["bangonallrm"])
                                 {
-                                    JObject channel_live_detail = JObject.Parse(response);
-                                    liveTitle = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveTitle"]?.ToString();
-                                    usersArray[i]["livetitle"] = liveTitle;
-                                    string templateUrl = channel_live_detail["content"]?["topExposedVideos"]?["openLive"]?["liveImageUrl"].ToString(); // liveImageUrl
-                                    int type = 480;
-
-                                    string liveImageUrl = templateUrl.Replace("{type}", type.ToString());
-                                    usersArray[i]["liveImageUrl"] = liveImageUrl;
-                                    //// 새로운 함수 호출
-                                    //await LoadLiveImageAsync(channelName, liveImageUrl);
+                                    ShowNotification(channelName, $"{channelName}님이 방송 중입니다!\n방송 제목: {liveTitle}", usersArray[i]["channlid"].ToString());
+                                    usersArray[i]["bangonallrm"] = true;
                                 }
                             }
-                            else
-                            {
-                                liveTitle = "방송중 아님";
-                                usersArray[i]["livetitle"] = liveTitle;
-                            }
-
-
-                            usersArray[i]["channelName"] = channelName;
-                            usersArray[i]["followerCount"] = followerCount;
-                            usersArray[i]["openlive"] = openLive;
-                            usersArray[i]["imageurl"] = channelImageUrl;
-                            usersArray[i]["imagename"] = channelImagename;
-
-                            if (!File.Exists($@"{imagedirectory}\{channelImagename}") & channelImagename != "ERROR-none-file.png")
-                            {
-                                usersArray[i]["imagedownload"] = false;
-                                await dloadImageAsync(channelImageUrl, channelImagename);
-                            }
-                            else if (File.Exists($@"{imagedirectory}\{channelImagename}"))
-                            {
-                                usersArray[i]["imagedownload"] = true;
-                            }
-
-
                         }
-                    }
-                    catch (Exception ex) 
-                    {
-                        printerror($"Api_get 함수에서 오류 발생 \n {ex}");
+                        else
+                        {
+                            liveTitle = "방송중 아님";
+                            usersArray[i]["livetitle"] = liveTitle;
+                            usersArray[i]["bangonallrm"] = false;
+                        }
+
+
+                        usersArray[i]["channelName"] = channelName;
+                        usersArray[i]["followerCount"] = followerCount;
+                        usersArray[i]["openlive"] = openLive;
+                        usersArray[i]["imageurl"] = channelImageUrl;
+                        usersArray[i]["imagename"] = channelImagename;
+
+                        if (!File.Exists($@"{imagedirectory}\{channelImagename}") & channelImagename != "ERROR-none-file.png")
+                        {
+                            usersArray[i]["imagedownload"] = false;
+                            await dloadImageAsync(channelImageUrl, channelImagename);
+                        }
+                        else if (File.Exists($@"{imagedirectory}\{channelImagename}"))
+                        {
+                            usersArray[i]["imagedownload"] = true;
+                        }
+
+
                     }
                 }
-
+                catch (Exception ex)
+                {
+                    printerror($"Api_get 함수에서 오류 발생 \n {ex}");
+                }
                 File.WriteAllText(JsonfileDirectory, data1.ToString());
                 jsonData = data1;
             }
@@ -434,15 +473,6 @@ namespace chzzkbangonallramTEST
 
 
 
-        // 라이브 알림 처리
-        private async Task NotifyIfLive(JToken user, string channelName, string liveTitle, string targetId)
-        {
-            if (user["bangonallrm"].ToString() == "False")
-            {
-                ShowNotification(channelName, $"{channelName}님이 방송 중입니다!\n방송 제목: {liveTitle}", targetId);
-                user["bangonallrm"] = true;
-            }
-        }
 
         // 이미지 다운로드 처리
         private async Task dloadImageAsync(string url, string filename)
@@ -489,7 +519,9 @@ namespace chzzkbangonallramTEST
             }
         }
 
+        public List<string> openlivestremername = new List<string>();
 
+        public List<string> pageforstremersname = new List<string>(); // 페이지별 스트리머 이름을 저장할 리스트
         public string GetUserName(int pageNumber, int userIndex, bool fullname)
         {
             // pageforstremersname 리스트에서 해당 페이지 번호를 찾아 출력
@@ -547,152 +579,182 @@ namespace chzzkbangonallramTEST
             }
         }
 
-        public List<string> openlivestremername = new List<string>();
-
-        public List<string> pageforstremersname = new List<string>(); // 페이지별 스트리머 이름을 저장할 리스트
-
-
-
         private async void update_labe()
         {
-            // JSON 데이터에서 "users" 항목을 추출
+            // UI 초기화
+            ResetUI();
+
+            // JSON 데이터에서 "users" 항목 추출
             JArray usersArray = (JArray)jsonData["users"];
-            //Print(usersArray.ToString());
 
             // openlivestremername 리스트를 초기화 (중복 방지)
-            openlivestremername.Clear(); // 이전 데이터 초기화
+            openlivestremername.Clear();
 
             // "openlive"가 true인 사용자들의 channelName을 openlivestremername에 추가
-            for (int i = 0; i < usersArray.Count; i++)
+            foreach (var user in usersArray)
             {
-                if (usersArray[i]["openlive"].ToString().Equals("True", StringComparison.OrdinalIgnoreCase))
+                if (user["openlive"]?.ToString().Equals("True", StringComparison.OrdinalIgnoreCase) == true)
                 {
-                    openlivestremername.Add(usersArray[i]["channelName"].ToString());
-
+                    openlivestremername.Add(user["channelName"].ToString());
                 }
             }
 
             // 페이지 나누기
             int pageSize = 3; // 한 페이지에 들어갈 사용자 수
             int totalUsers = openlivestremername.Count;
-            int totalPages = (totalUsers + pageSize - 1) / pageSize; // 페이지 수 계산
+            int totalPages = (totalUsers + pageSize - 1) / pageSize; // 총 페이지 수 계산
             mexpage = totalPages;
 
-            // pageforstremersname 리스트 초기화 (새로운 페이지 정보로 갱신)
+            // 페이지 정보 갱신
             pageforstremersname.Clear();
-
-            // 페이지별로 스트리머 이름 나누기
             for (int page = 0; page < totalPages; page++)
             {
-                List<string> pageUsers = new List<string>(); // 현재 페이지의 사용자 리스트
-                for (int i = page * pageSize; i < (page + 1) * pageSize && i < totalUsers; i++)
-                {
-                    pageUsers.Add(openlivestremername[i]);
-                }
-
-                // 페이지 정보를 string으로 만들어 리스트에 저장
+                var pageUsers = openlivestremername.Skip(page * pageSize).Take(pageSize);
                 pageforstremersname.Add($"Page {page + 1}: {{{string.Join(", ", pageUsers)}}}");
             }
 
-            channle_image_panel3.Visible = true;
-            channle_image_panel2.Visible = true;
-            channle_image_panel1.Visible = true;
-
-
-            if (GetUserName(thispage, 0, true) == null)
+            // 현재 페이지의 데이터로 UI 갱신
+            for (int i = 0; i < pageSize; i++)
             {
-                channle_image_panel1.Visible = false;
-                no_open_live.Visible = true;
-                back_ground_pannel1.Visible = false;
+                var username = GetUserName(thispage, i, true);
+                if (username == null) continue;
 
-            }
-            else
-            {
-                back_ground_pannel1.Visible = true;
-                var info = usersArray.FirstOrDefault(u => u["channelName"].ToString() == GetUserName(thispage, 0, true));
-                Print($"{GetUserName(thispage, 0, true)} \n {info["liveImageUrl"].ToString()}");
+                var info = usersArray.FirstOrDefault(u => u["channelName"].ToString() == username);
                 if (info != null)
                 {
-                    //Print($"{GetUserName(thispage, 0, true)}, {info["liveImageUrl"].ToString()}");
-                    await LoadLiveImageAsync(GetUserName(thispage, 0, true), info["liveImageUrl"].ToString());
+                    await LoadLiveImageAsync(username, info["liveImageUrl"]?.ToString());
                 }
+
+                // UI 업데이트 (패널, 레이블, 배경)
+                UpdatePanelAndLabels(i, username, (JObject) info);
             }
-
-
-            if (GetUserName(thispage, 1, true) == null)
-            {
-                channle_image_panel2.Visible = false;
-                no_open_live.Visible = false;
-                back_ground_pannel2.Visible = false;
-
-            }
-            else
-            {
-
-                back_ground_pannel2.Visible = true;
-                var info = usersArray.FirstOrDefault(u => u["channelName"].ToString() == GetUserName(thispage, 1, true));
-                Print($"{GetUserName(thispage, 1, true)} \n {info["liveImageUrl"].ToString()}");
-                if (info != null)
-                {
-                    //Print($"{GetUserName(thispage, 1, true)}, {info["liveImageUrl"].ToString()}");
-                    await LoadLiveImageAsync(GetUserName(thispage, 1, true), info["liveImageUrl"].ToString());
-                }
-            }
-
-
-            // 온라인 아닌 스트리머 숨기기
-            if (GetUserName(thispage, 2, true) == null)
-            {
-                channle_image_panel3.Visible = false;
-                no_open_live.Visible = false;
-                back_ground_pannel3.Visible = false;
-            }
-            else
-            {
-                back_ground_pannel2.Visible = true;
-                var info = usersArray.FirstOrDefault(u => u["channelName"].ToString() == GetUserName(thispage, 2, true));
-                Print($"{GetUserName(thispage, 2, true)} \n {info["liveImageUrl"].ToString()}");
-                if (info != null)
-                { 
-                    //Print($"{GetUserName(thispage, 2, true)}, {info["liveImageUrl"].ToString()}");
-                    await LoadLiveImageAsync(GetUserName(thispage, 2, true), info["liveImageUrl"].ToString());
-                }
-            }
-
-
-
-            // 스트리머 이름 라벨 업데이트
-            stremer_name_label1.Text = GetUserName(thispage, 0, false); // 첫 번째 유저
-            stremer_name_label2.Text = GetUserName(thispage, 1, false); // 두 번째 유저
-            stremer_name_label3.Text = GetUserName(thispage, 2, false); // 세 번째 유저
-
-            // 스트리밍 제목 업데이트
-
-            streming_title_label1.Text = GetdataByName(GetUserName(thispage, 0, true), "livetitle", true);
-            streming_title_label2.Text = GetdataByName(GetUserName(thispage, 1, true), "livetitle", true);
-            streming_title_label3.Text = GetdataByName(GetUserName(thispage, 2, true), "livetitle", true);
-
-
-            // 이미지 업데이트
-            if (GetdataByName(GetUserName(thispage, 0, true), "imagename", false) != null)
-            {
-                channle_image_panel1.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 0, true), "imagename", false)}");
-                channle_image_panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-
-            if (GetdataByName(GetUserName(thispage, 1, false), "imagename", false) != null)
-            {
-                //Print($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 1, true), "imagename", false)}");
-                channle_image_panel2.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 1, true), "imagename", false)}");
-                channle_image_panel2.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-            if (GetdataByName(GetUserName(thispage, 2, true), "imagename", false) != null)
-            {
-                channle_image_panel3.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{GetdataByName(GetUserName(thispage, 2, false), "imagename", false)}");
-                channle_image_panel3.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-
         }
+
+        private void ResetUI()
+        {
+            // 모든 UI 요소를 숨김
+            channle_image_panel1.Visible = false;
+            channle_image_panel2.Visible = false;
+            channle_image_panel3.Visible = false;
+            no_open_live.Visible = false;
+            back_ground_pannel1.Visible = false;
+            back_ground_pannel2.Visible = false;
+            back_ground_pannel3.Visible = false;
+
+            // 스트리머 이름과 제목 초기화
+            stremer_name_label1.Text = "";
+            stremer_name_label2.Text = "";
+            stremer_name_label3.Text = "";
+            streming_title_label1.Text = "";
+            streming_title_label2.Text = "";
+            streming_title_label3.Text = "";
+
+            // 이미지 초기화
+            channle_image_panel1.BackgroundImage = null;
+            channle_image_panel2.BackgroundImage = null;
+            channle_image_panel3.BackgroundImage = null;
+        }
+
+        private async void UpdatePanelAndLabels(int index, string username, JObject info)
+        {
+            if (index == 0)
+            {
+                // JSON 데이터 읽기
+                string jsonContent = File.Exists(SettingJsonDIrectory) ? File.ReadAllText(SettingJsonDIrectory) : "{}";
+                JObject data = string.IsNullOrWhiteSpace(jsonContent) ? new JObject() : JObject.Parse(jsonContent);
+
+                // 설정 값 가져오기
+                bool showLiveImage = data["setting"]?["showliveimage"]?.Value<bool>() ?? false;
+                back_ground_pannel1.Visible = true;
+                channle_image_panel1.Visible = true;
+                back_ground_pannel1.Visible = true;
+                stremer_name_label1.Text = username;
+                streming_title_label1.Text = GetdataByName(username, "livetitle", true);
+                var imageName = GetdataByName(username, "imagename", false);
+                if (imageName != null)
+                {
+                    channle_image_panel1.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{imageName}");
+                    channle_image_panel1.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                if (showLiveImage)
+                {
+                    if (info != null)
+                    {
+                        //Print($"{GetUserName(thispage, 0, true)}, {info["liveImageUrl"].ToString()}");
+                        await LoadLiveImageAsync(GetUserName(thispage, 0, true), info["liveImageUrl"].ToString());
+                    }
+                }
+                else
+                {
+                    back_ground_pannel1.BackgroundImage = null;
+                }
+            }
+            else if (index == 1)
+            {
+                // JSON 데이터 읽기
+                string jsonContent = File.Exists(SettingJsonDIrectory) ? File.ReadAllText(SettingJsonDIrectory) : "{}";
+                JObject data = string.IsNullOrWhiteSpace(jsonContent) ? new JObject() : JObject.Parse(jsonContent);
+
+                // 설정 값 가져오기
+                bool showLiveImage = data["setting"]?["showliveimage"]?.Value<bool>() ?? false;
+                back_ground_pannel1.Visible = true;
+                channle_image_panel2.Visible = true;
+                back_ground_pannel2.Visible = true;
+                stremer_name_label2.Text = username;
+                streming_title_label2.Text = GetdataByName(username, "livetitle", true);
+                var imageName = GetdataByName(username, "imagename", false);
+                if (imageName != null)
+                {
+                    channle_image_panel2.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{imageName}");
+                    channle_image_panel2.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                if (showLiveImage)
+                {
+                    if (info != null)
+                    {
+                        //Print($"{GetUserName(thispage, 0, true)}, {info["liveImageUrl"].ToString()}");
+                        await LoadLiveImageAsync(GetUserName(thispage, 1, true), info["liveImageUrl"].ToString());
+                    }
+                }
+                else
+                {
+                    back_ground_pannel2.BackgroundImage = null;
+                }
+            }
+            else if (index == 2)
+            {
+                // JSON 데이터 읽기
+                string jsonContent = File.Exists(SettingJsonDIrectory) ? File.ReadAllText(SettingJsonDIrectory) : "{}";
+                JObject data = string.IsNullOrWhiteSpace(jsonContent) ? new JObject() : JObject.Parse(jsonContent);
+
+                // 설정 값 가져오기
+                bool showLiveImage = data["setting"]?["showliveimage"]?.Value<bool>() ?? false;
+                back_ground_pannel1.Visible = true;
+                channle_image_panel3.Visible = true;
+                back_ground_pannel3.Visible = true;
+                stremer_name_label3.Text = username;
+                streming_title_label3.Text = GetdataByName(username, "livetitle", true);
+                var imageName = GetdataByName(username, "imagename", false);
+                if (imageName != null)
+                {
+                    channle_image_panel3.BackgroundImage = Image.FromFile($@"{ThisDirectory}\images\{imageName}");
+                    channle_image_panel3.BackgroundImageLayout = ImageLayout.Stretch;
+                }
+                if (showLiveImage)
+                {
+                    if (info != null)
+                    {
+                        //Print($"{GetUserName(thispage, 0, true)}, {info["liveImageUrl"].ToString()}");
+                        await LoadLiveImageAsync(GetUserName(thispage, 2, true), info["liveImageUrl"].ToString());
+                    }
+                }
+                else
+                {
+                    back_ground_pannel3.BackgroundImage = null;
+                }
+            }
+        }
+
 
 
 
@@ -702,14 +764,10 @@ namespace chzzkbangonallramTEST
         {
             try
             {
-                if (settingjsonData["setting"]["firstrun"].ToString() != "True")
+                while (!_cts.Token.IsCancellationRequested)
                 {
-                    while (!_cts.Token.IsCancellationRequested)
-                    {
-                        update_labe();
-                        api_update_labe(false);
-                        await Task.Delay(TimeSpan.FromMinutes(1), _cts.Token);
-                    }
+                    api_update_labe(false);
+                    await Task.Delay(TimeSpan.FromMinutes(1), _cts.Token);
                 }
             }
             catch (TaskCanceledException)
@@ -1172,6 +1230,35 @@ namespace chzzkbangonallramTEST
         private void channle_image_panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private bool settingformshow = false;
+        private void opensetting_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+            //visble_main_page(false);
+            Form2 form2 = new Form2();
+            //settingjsonData["setting"]["firstrun"] = false;
+            panel4.Size = new Size(477, 643);
+            //Print(panel4.Size.ToString());
+            //panel4.Location = new Point(8, 46);
+            form2.TopLevel = false; // 최상위 윈도우 속성 비활성화
+            form2.FormBorderStyle = FormBorderStyle.None; // 테두리 제거
+            form2.Dock = DockStyle.Fill; // 패널 크기에 맞게 채우기
+            panel4.Controls.Clear();
+            panel4.Controls.Add(form2); // 패널에 추가
+            form2.Show(); // 폼 표시
+
+            //visble_main_page(settingformshow);
+            panel4.Visible = !settingformshow;
+            settingformshow = !settingformshow;
+            set_label_color();
+        }
+
+        private void howtousebtn_MouseClick(object sender, MouseEventArgs e)
+        {
+            string link = @"https://scratch-maple-882.notion.site/1449098ea1a480ff89d3fdee4e334616";
+            System.Diagnostics.Process.Start(link);
         }
     }
 }

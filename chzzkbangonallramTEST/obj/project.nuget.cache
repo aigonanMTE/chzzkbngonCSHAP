@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QmIN0nsgpEU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\a0109\\Desktop\\c#\\chzzkbngonCSHAP\\chzzkbangonallramTEST\\chzzkbangonallramTEST.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\a0109\\.nuget\\packages\\microsoft.projectreunion.winui\\0.8.12\\microsoft.projectreunion.winui.0.8.12.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -32,6 +32,7 @@ namespace chzzkbangonallramTEST
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.opensetting = new System.Windows.Forms.Button();
             this.howtousebtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -43,14 +44,14 @@ namespace chzzkbangonallramTEST
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.no_open_live = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.no_open_live = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.back_ground_pannel3 = new System.Windows.Forms.Panel();
             this.channle_image_panel3 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
             this.streming_title_label3 = new System.Windows.Forms.Label();
             this.stremer_name_label3 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.back_ground_pannel2 = new System.Windows.Forms.Panel();
             this.channle_image_panel2 = new System.Windows.Forms.Panel();
             this.streming_title_label2 = new System.Windows.Forms.Label();
@@ -60,8 +61,8 @@ namespace chzzkbangonallramTEST
             this.streming_title_label1 = new System.Windows.Forms.Label();
             this.stremer_name_label1 = new System.Windows.Forms.Label();
             this.form_panel = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.opensetting = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.back_ground_pannel3.SuspendLayout();
@@ -85,6 +86,20 @@ namespace chzzkbangonallramTEST
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
+            // opensetting
+            // 
+            this.opensetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.opensetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.opensetting.Font = new System.Drawing.Font("CookieRun Bold", 15F);
+            this.opensetting.ForeColor = System.Drawing.Color.White;
+            this.opensetting.Image = global::chzzkbangonallramTEST.Properties.Resources.제1목없음;
+            this.opensetting.Location = new System.Drawing.Point(357, 0);
+            this.opensetting.Name = "opensetting";
+            this.opensetting.Size = new System.Drawing.Size(32, 31);
+            this.opensetting.TabIndex = 3;
+            this.opensetting.UseVisualStyleBackColor = false;
+            this.opensetting.MouseClick += new System.Windows.Forms.MouseEventHandler(this.opensetting_MouseClick);
+            // 
             // howtousebtn
             // 
             this.howtousebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
@@ -97,6 +112,7 @@ namespace chzzkbangonallramTEST
             this.howtousebtn.TabIndex = 3;
             this.howtousebtn.Text = "?";
             this.howtousebtn.UseVisualStyleBackColor = false;
+            this.howtousebtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.howtousebtn_MouseClick);
             // 
             // label1
             // 
@@ -218,19 +234,9 @@ namespace chzzkbangonallramTEST
             this.panel3.Size = new System.Drawing.Size(483, 518);
             this.panel3.TabIndex = 7;
             // 
-            // no_open_live
-            // 
-            this.no_open_live.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.무제_1;
-            this.no_open_live.Location = new System.Drawing.Point(475, 154);
-            this.no_open_live.Name = "no_open_live";
-            this.no_open_live.Size = new System.Drawing.Size(363, 351);
-            this.no_open_live.TabIndex = 8;
-            this.no_open_live.Visible = false;
-            this.no_open_live.MouseClick += new System.Windows.Forms.MouseEventHandler(this.no_open_live_MouseClick);
-            // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold);
             this.button5.ForeColor = System.Drawing.Color.White;
@@ -242,30 +248,9 @@ namespace chzzkbangonallramTEST
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // back_ground_pannel3
-            // 
-            this.back_ground_pannel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.back_ground_pannel3.Controls.Add(this.channle_image_panel3);
-            this.back_ground_pannel3.Controls.Add(this.streming_title_label3);
-            this.back_ground_pannel3.Controls.Add(this.stremer_name_label3);
-            this.back_ground_pannel3.Location = new System.Drawing.Point(3, 338);
-            this.back_ground_pannel3.Name = "back_ground_pannel3";
-            this.back_ground_pannel3.Size = new System.Drawing.Size(477, 180);
-            this.back_ground_pannel3.TabIndex = 9;
-            // 
-            // channle_image_panel3
-            // 
-            this.channle_image_panel3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
-            this.channle_image_panel3.Location = new System.Drawing.Point(14, 22);
-            this.channle_image_panel3.Name = "channle_image_panel3";
-            this.channle_image_panel3.Size = new System.Drawing.Size(120, 120);
-            this.channle_image_panel3.TabIndex = 7;
-            this.channle_image_panel3.Visible = false;
-            this.channle_image_panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel3_MouseClick);
-            // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.button6.BackColor = System.Drawing.Color.Transparent;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("굴림", 20F, System.Drawing.FontStyle.Bold);
             this.button6.ForeColor = System.Drawing.Color.White;
@@ -277,9 +262,55 @@ namespace chzzkbangonallramTEST
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // no_open_live
+            // 
+            this.no_open_live.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.무제_1;
+            this.no_open_live.Location = new System.Drawing.Point(475, 154);
+            this.no_open_live.Name = "no_open_live";
+            this.no_open_live.Size = new System.Drawing.Size(363, 351);
+            this.no_open_live.TabIndex = 8;
+            this.no_open_live.Visible = false;
+            this.no_open_live.MouseClick += new System.Windows.Forms.MouseEventHandler(this.no_open_live_MouseClick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("CookieRun Bold", 23F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(226, 463);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 42);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "1";
+            // 
+            // back_ground_pannel3
+            // 
+            this.back_ground_pannel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
+            this.back_ground_pannel3.Controls.Add(this.channle_image_panel3);
+            this.back_ground_pannel3.Controls.Add(this.streming_title_label3);
+            this.back_ground_pannel3.Controls.Add(this.stremer_name_label3);
+            this.back_ground_pannel3.Location = new System.Drawing.Point(3, 338);
+            this.back_ground_pannel3.Name = "back_ground_pannel3";
+            this.back_ground_pannel3.Size = new System.Drawing.Size(477, 180);
+            this.back_ground_pannel3.TabIndex = 9;
+            this.back_ground_pannel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel3_MouseClick);
+            // 
+            // channle_image_panel3
+            // 
+            this.channle_image_panel3.BackColor = System.Drawing.Color.Transparent;
+            this.channle_image_panel3.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
+            this.channle_image_panel3.Location = new System.Drawing.Point(14, 22);
+            this.channle_image_panel3.Name = "channle_image_panel3";
+            this.channle_image_panel3.Size = new System.Drawing.Size(120, 120);
+            this.channle_image_panel3.TabIndex = 7;
+            this.channle_image_panel3.Visible = false;
+            this.channle_image_panel3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel3_MouseClick);
+            // 
             // streming_title_label3
             // 
             this.streming_title_label3.AutoSize = true;
+            this.streming_title_label3.BackColor = System.Drawing.Color.Transparent;
             this.streming_title_label3.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.streming_title_label3.ForeColor = System.Drawing.Color.White;
             this.streming_title_label3.Location = new System.Drawing.Point(173, 71);
@@ -293,6 +324,7 @@ namespace chzzkbangonallramTEST
             // stremer_name_label3
             // 
             this.stremer_name_label3.AutoSize = true;
+            this.stremer_name_label3.BackColor = System.Drawing.Color.Transparent;
             this.stremer_name_label3.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.stremer_name_label3.ForeColor = System.Drawing.Color.White;
             this.stremer_name_label3.Location = new System.Drawing.Point(173, 22);
@@ -302,17 +334,6 @@ namespace chzzkbangonallramTEST
             this.stremer_name_label3.Text = "스트리머 이름";
             this.stremer_name_label3.Visible = false;
             this.stremer_name_label3.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("CookieRun Bold", 23F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(226, 463);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 42);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "1";
             // 
             // back_ground_pannel2
             // 
@@ -324,9 +345,11 @@ namespace chzzkbangonallramTEST
             this.back_ground_pannel2.Name = "back_ground_pannel2";
             this.back_ground_pannel2.Size = new System.Drawing.Size(477, 177);
             this.back_ground_pannel2.TabIndex = 9;
+            this.back_ground_pannel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel2_MouseClick);
             // 
             // channle_image_panel2
             // 
+            this.channle_image_panel2.BackColor = System.Drawing.Color.Transparent;
             this.channle_image_panel2.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
             this.channle_image_panel2.Location = new System.Drawing.Point(14, 30);
             this.channle_image_panel2.Name = "channle_image_panel2";
@@ -339,6 +362,7 @@ namespace chzzkbangonallramTEST
             // streming_title_label2
             // 
             this.streming_title_label2.AutoSize = true;
+            this.streming_title_label2.BackColor = System.Drawing.Color.Transparent;
             this.streming_title_label2.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.streming_title_label2.ForeColor = System.Drawing.Color.White;
             this.streming_title_label2.Location = new System.Drawing.Point(173, 79);
@@ -352,6 +376,7 @@ namespace chzzkbangonallramTEST
             // stremer_name_label2
             // 
             this.stremer_name_label2.AutoSize = true;
+            this.stremer_name_label2.BackColor = System.Drawing.Color.Transparent;
             this.stremer_name_label2.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.stremer_name_label2.ForeColor = System.Drawing.Color.White;
             this.stremer_name_label2.Location = new System.Drawing.Point(173, 30);
@@ -372,9 +397,11 @@ namespace chzzkbangonallramTEST
             this.back_ground_pannel1.Name = "back_ground_pannel1";
             this.back_ground_pannel1.Size = new System.Drawing.Size(477, 177);
             this.back_ground_pannel1.TabIndex = 9;
+            this.back_ground_pannel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.channle_image_panel1_MouseClick);
             // 
             // channle_image_panel1
             // 
+            this.channle_image_panel1.BackColor = System.Drawing.Color.Transparent;
             this.channle_image_panel1.BackgroundImage = global::chzzkbangonallramTEST.Properties.Resources.ERROR_none_file;
             this.channle_image_panel1.Location = new System.Drawing.Point(14, 19);
             this.channle_image_panel1.Name = "channle_image_panel1";
@@ -387,6 +414,7 @@ namespace chzzkbangonallramTEST
             // streming_title_label1
             // 
             this.streming_title_label1.AutoSize = true;
+            this.streming_title_label1.BackColor = System.Drawing.Color.Transparent;
             this.streming_title_label1.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.streming_title_label1.ForeColor = System.Drawing.Color.White;
             this.streming_title_label1.Location = new System.Drawing.Point(173, 68);
@@ -401,6 +429,7 @@ namespace chzzkbangonallramTEST
             // 
             this.stremer_name_label1.AccessibleDescription = "";
             this.stremer_name_label1.AutoSize = true;
+            this.stremer_name_label1.BackColor = System.Drawing.Color.Transparent;
             this.stremer_name_label1.Font = new System.Drawing.Font("CookieRun Bold", 23F);
             this.stremer_name_label1.ForeColor = System.Drawing.Color.White;
             this.stremer_name_label1.Location = new System.Drawing.Point(173, 19);
@@ -419,18 +448,14 @@ namespace chzzkbangonallramTEST
             this.form_panel.TabIndex = 8;
             this.form_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.form_panel_Paint);
             // 
-            // opensetting
+            // panel4
             // 
-            this.opensetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
-            this.opensetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.opensetting.Font = new System.Drawing.Font("CookieRun Bold", 15F);
-            this.opensetting.ForeColor = System.Drawing.Color.White;
-            this.opensetting.Image = global::chzzkbangonallramTEST.Properties.Resources.제1목없음;
-            this.opensetting.Location = new System.Drawing.Point(357, 0);
-            this.opensetting.Name = "opensetting";
-            this.opensetting.Size = new System.Drawing.Size(32, 31);
-            this.opensetting.TabIndex = 3;
-            this.opensetting.UseVisualStyleBackColor = false;
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Location = new System.Drawing.Point(0, 49);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(40, 42);
+            this.panel4.TabIndex = 9;
+            this.panel4.Visible = false;
             // 
             // Form1
             // 
@@ -438,6 +463,7 @@ namespace chzzkbangonallramTEST
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(25)))));
             this.ClientSize = new System.Drawing.Size(479, 691);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.form_panel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel3);
@@ -501,6 +527,7 @@ namespace chzzkbangonallramTEST
         private System.Windows.Forms.Panel back_ground_pannel3;
         private System.Windows.Forms.Panel back_ground_pannel2;
         private System.Windows.Forms.Button opensetting;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 
