@@ -134,7 +134,17 @@ namespace chzzkbangonallramTEST
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            SettingJsonDIrectory = JsonDirectory + @"\setting.json";
+            string settingjsondata = File.ReadAllText(SettingJsonDIrectory);
+            var backgroundrun = (bool)settingjsonData["setting"]["backgroundrun"];
+            if (backgroundrun) 
+            {
+                this.Hide();
+            }
+            else 
+            {
+                Application.Exit();
+            }
         }
 
         private Point mouseLocation;  // 클래스 수준에서 선언

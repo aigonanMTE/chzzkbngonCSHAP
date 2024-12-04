@@ -39,10 +39,12 @@ namespace chzzkbangonallramTEST
         private SButton liveimageshow;
         private TextBox getinputcoler;
         private System.Windows.Forms.Label label2;
+        private SButton backgroundrunbutton;
         private void mainscrollobject()
         {
             var showliveimage = (bool)settingjsonData["setting"]["showliveimage"];
             var stremer_label_coler = (string)settingjsonData["setting"]["stremer_label_coler"]; // 문자열로 변환
+            var backgroundrun = (bool)settingjsonData["setting"]["backgroundrun"];
 
             scrollPanel.AutoScroll = true;
 
@@ -110,9 +112,46 @@ namespace chzzkbangonallramTEST
             };
             getinputcoler.TextChanged += Getinputcoler_TextChanged;
             scrollPanel.Controls.Add(getinputcoler);
-            
+
+            // Background 실행 라벨 생성
+            System.Windows.Forms.Label backgroundrunlabel = new System.Windows.Forms.Label
+            {
+                Width = 300,
+                Height = 40,
+                Text = "백그라운드에서 실행",
+                Font = new Font("CookieRun Bold", 24),
+                ForeColor = System.Drawing.Color.White,
+                Margin = new Padding(0, 0, 0, 50)
+            };
+
+            // 라벨의 위치를 텍스트 박스 아래로 설정
+            backgroundrunlabel.Location = new Point(0, getinputcoler.Location.Y + getinputcoler.Height + 20);
+
+            // Background 실행 버튼 생성
+            backgroundrunbutton = new SButton
+            {
+                IsOn = backgroundrun,
+                Width = 100,
+                Height = 40,
+                Margin = new Padding(0, 0, 0, 50)
+            };
+
+            // 버튼의 위치를 라벨 오른쪽으로 설정
+            backgroundrunbutton.Location = new Point(backgroundrunlabel.Width + 50, backgroundrunlabel.Location.Y);
+
+            // 컨트롤 추가
+            scrollPanel.Controls.Add(backgroundrunlabel);
+            scrollPanel.Controls.Add(backgroundrunbutton);
+
+            backgroundrunbutton.MouseClick += Backgroundrunbutton_MouseClick;
 
             // JSON 파일에 컬러값을 업데이트하여 저장
+            File.WriteAllText(SettingJsonDIrectory, settingjsonData.ToString());
+        }
+
+        private void Backgroundrunbutton_MouseClick(object sender, MouseEventArgs e)
+        {
+            settingjsonData["setting"]["backgroundrun"] = backgroundrunbutton.IsOn;
             File.WriteAllText(SettingJsonDIrectory, settingjsonData.ToString());
         }
 
