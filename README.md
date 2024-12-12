@@ -1,11 +1,9 @@
 # chzzkbngonCSHAP
- 공식 서비스 서버 : https://discord.gg/h7vWQR9VH4
- DISCORD mteword
-
-만드는 중입니다
+![image](https://github.com/user-attachments/assets/8ac83cd1-d72c-4212-b8bc-c2a9534094d5)
+공식 서비스 서버: https://discord.gg/h7vWQR9VH4
 
 
 
-2차 수정과 저작권
-본 프로그램을 저작권은 창작자(https://github.com/iwantmunsang)에게 있으며 재 배포를 금지합니다
-2차 수정은 허용 되지만 공유 하지 마십시오
+# 사용 방법
+노션 앱에 정리해 놓았으니, 노션 앱을 참고해 주세요.
+https://scratch-maple-882.notion.site/1449098ea1a480ff89d3fdee4e334616
