@@ -1,0 +1,11 @@
+{
+  "setting": {
+    "showliveimage": true,
+    "stremer_label_coler": "red",
+    "a": 255,
+    "b": 0,
+    "g": 0,
+    "r": 255,
+    "backgroundrun": true
+  }
+}

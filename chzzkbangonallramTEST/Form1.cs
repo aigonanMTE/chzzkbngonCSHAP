@@ -103,6 +103,23 @@ namespace chzzkbangonallramTEST
                 Text = "치지직뱅온알람"
             };
 
+            // ContextMenuStrip 초기화
+            ContextMenuStrip contextMenu = new ContextMenuStrip();
+            contextMenu.Items.Add("열기", null, (s, e) =>
+            {
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+            });
+            contextMenu.Items.Add("닫기", null, (s, e) =>
+            {
+                notifyIcon.Visible = false; // 트레이 아이콘 숨기기
+                Application.Exit(); // 애플리케이션 종료
+            });
+
+            notifyIcon.ContextMenuStrip = contextMenu;
+
+
+
             // NotifyIcon 더블 클릭 이벤트
             notifyIcon.DoubleClick += (s, e) =>
             {
@@ -110,6 +127,15 @@ namespace chzzkbangonallramTEST
                 this.Show();
                 this.WindowState = FormWindowState.Normal;
             };
+            notifyIcon.MouseClick += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    notifyIcon.ContextMenuStrip?.Show();
+                }
+            };
+
+            
 
             await StartApiUpdateLoopAsync();
         }

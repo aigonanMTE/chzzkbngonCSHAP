@@ -117,6 +117,945 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>479, 691</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="streming_title_label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 42</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;reload_button.Name" xml:space="preserve">
+    <value>reload_button</value>
+  </data>
+  <data name="&gt;&gt;opensetting.Name" xml:space="preserve">
+    <value>opensetting</value>
+  </data>
+  <data name="button5.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="button2.Text" xml:space="preserve">
+    <value>--</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="channle_image_panel3.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>치지직 뱅온 알람</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="reload_button.Text" xml:space="preserve">
+    <value>리로드</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="howtousebtn.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="channle_image_panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="streming_title_label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="back_ground_pannel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>477, 177</value>
+  </data>
+  <data name="no_open_live.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;opensetting.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="channle_image_panel2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="streming_title_label3.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;reload_button.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>483, 518</value>
+  </data>
+  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="button4.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="button2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="channle_image_panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 30</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="button2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>굴림, 20pt</value>
+  </data>
+  <data name="&gt;&gt;form_panel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel2.Name" xml:space="preserve">
+    <value>back_ground_pannel2</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, 174</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 49</value>
+  </data>
+  <data name="stremer_name_label2.Text" xml:space="preserve">
+    <value>스트리머 이름</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel2.Parent" xml:space="preserve">
+    <value>back_ground_pannel2</value>
+  </data>
+  <data name="channle_image_panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="panel4.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="streming_title_label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 42</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, -1</value>
+  </data>
+  <data name="form_panel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-3, 39</value>
+  </data>
+  <data name="stremer_name_label3.Text" xml:space="preserve">
+    <value>스트리머 이름</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="stremer_name_label3.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="reload_button.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="stremer_name_label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="button4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="button5.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;reload_button.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label3.Parent" xml:space="preserve">
+    <value>back_ground_pannel3</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>-19, 157</value>
+  </data>
+  <data name="streming_title_label3.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="stremer_name_label1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;howtousebtn.Name" xml:space="preserve">
+    <value>howtousebtn</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel1.Name" xml:space="preserve">
+    <value>channle_image_panel1</value>
+  </data>
+  <data name="&gt;&gt;howtousebtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="stremer_name_label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 42</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel1.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="button4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 106</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;button5.Name" xml:space="preserve">
+    <value>button5</value>
+  </data>
+  <data name="&gt;&gt;reload_button.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="streming_title_label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="stremer_name_label2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 31</value>
+  </data>
+  <data name="&gt;&gt;button4.Name" xml:space="preserve">
+    <value>button4</value>
+  </data>
+  <data name="button5.Text" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="&gt;&gt;opensetting.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 20pt</value>
+  </data>
+  <data name="textBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 102</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 37</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="form_panel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="button4.Text" xml:space="preserve">
+    <value>추가</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="channle_image_panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 120</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label3.Name" xml:space="preserve">
+    <value>stremer_name_label3</value>
+  </data>
+  <data name="button6.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label2.Parent" xml:space="preserve">
+    <value>back_ground_pannel2</value>
+  </data>
+  <data name="button6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>183, 463</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="streming_title_label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel1.Parent" xml:space="preserve">
+    <value>back_ground_pannel1</value>
+  </data>
+  <data name="streming_title_label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 79</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel3.Name" xml:space="preserve">
+    <value>channle_image_panel3</value>
+  </data>
+  <data name="streming_title_label1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;form_panel.Name" xml:space="preserve">
+    <value>form_panel</value>
+  </data>
+  <data name="opensetting.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;no_open_live.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button6.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="back_ground_pannel1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="back_ground_pannel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 338</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="button5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 42</value>
+  </data>
+  <data name="stremer_name_label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="stremer_name_label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label3.Name" xml:space="preserve">
+    <value>streming_title_label3</value>
+  </data>
+  <data name="back_ground_pannel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>477, 180</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="stremer_name_label1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="channle_image_panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 120</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 12</value>
+  </data>
+  <data name="stremer_name_label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 42</value>
+  </data>
+  <data name="textBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label2.Name" xml:space="preserve">
+    <value>streming_title_label2</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="back_ground_pannel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 163</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;button5.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="stremer_name_label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="opensetting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 31</value>
+  </data>
+  <data name="&gt;&gt;bindingSource1.Name" xml:space="preserve">
+    <value>bindingSource1</value>
+  </data>
+  <data name="form_panel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button2.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="howtousebtn.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="channle_image_panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 22</value>
+  </data>
+  <data name="&gt;&gt;button4.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel1.Name" xml:space="preserve">
+    <value>back_ground_pannel1</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>pa</value>
+  </data>
+  <data name="opensetting.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 15pt</value>
+  </data>
+  <data name="streming_title_label3.Text" xml:space="preserve">
+    <value>제목제목제목제목제목</value>
+  </data>
+  <data name="channle_image_panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 120</value>
+  </data>
+  <data name="button6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 42</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 42</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="reload_button.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 52</value>
+  </data>
+  <data name="&gt;&gt;button2.Name" xml:space="preserve">
+    <value>button2</value>
+  </data>
+  <data name="&gt;&gt;no_open_live.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="button5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>264, 463</value>
+  </data>
+  <data name="label4.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Yes</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="streming_title_label2.Text" xml:space="preserve">
+    <value>제목제목제목제목제목</value>
+  </data>
+  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>410, 0</value>
+  </data>
+  <data name="opensetting.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="channle_image_panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>483, 47</value>
+  </data>
+  <data name="button5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>굴림, 20pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;button6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>197, 49</value>
+  </data>
+  <data name="stremer_name_label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 30</value>
+  </data>
+  <data name="&gt;&gt;button5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="back_ground_pannel3.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label1.Parent" xml:space="preserve">
+    <value>back_ground_pannel1</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 37</value>
+  </data>
+  <data name="&gt;&gt;bindingSource1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;form_panel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="streming_title_label1.Text" xml:space="preserve">
+    <value>제목제목제목제목제목</value>
+  </data>
+  <data name="no_open_live.Size" type="System.Drawing.Size, System.Drawing">
+    <value>363, 351</value>
+  </data>
+  <data name="reload_button.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="button6.Text" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="no_open_live.Location" type="System.Drawing.Point, System.Drawing">
+    <value>475, 154</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>체널 링크</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel3.Parent" xml:space="preserve">
+    <value>back_ground_pannel3</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 0</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;howtousebtn.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="streming_title_label2.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;opensetting.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="howtousebtn.Text" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="textBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 54</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel3.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;howtousebtn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="howtousebtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 31</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form1</value>
+  </data>
+  <data name="streming_title_label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 68</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label2.Parent" xml:space="preserve">
+    <value>back_ground_pannel2</value>
+  </data>
+  <data name="reload_button.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 48</value>
+  </data>
+  <data name="stremer_name_label3.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label3.Parent" xml:space="preserve">
+    <value>back_ground_pannel3</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>226, 463</value>
+  </data>
+  <data name="stremer_name_label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 22</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="stremer_name_label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="stremer_name_label1.AccessibleDescription" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="streming_title_label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 71</value>
+  </data>
+  <data name="stremer_name_label2.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="button4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 45</value>
+  </data>
+  <data name="&gt;&gt;button4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="channle_image_panel1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="no_open_live.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="channle_image_panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 19</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label2.Name" xml:space="preserve">
+    <value>stremer_name_label2</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="button1.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 42</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label1.Parent" xml:space="preserve">
+    <value>back_ground_pannel1</value>
+  </data>
+  <data name="streming_title_label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="streming_title_label1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;textBox2.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="stremer_name_label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 19</value>
+  </data>
+  <data name="streming_title_label2.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;textBox2.Name" xml:space="preserve">
+    <value>textBox2</value>
+  </data>
+  <data name="textBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 49</value>
+  </data>
+  <data name="stremer_name_label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="back_ground_pannel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="&gt;&gt;button6.Name" xml:space="preserve">
+    <value>button6</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 20pt, style=Bold</value>
+  </data>
+  <data name="streming_title_label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>293, 42</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="howtousebtn.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 15pt</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 42</value>
+  </data>
+  <data name="back_ground_pannel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>477, 177</value>
+  </data>
+  <data name="streming_title_label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="&gt;&gt;button4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="button6.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="stremer_name_label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 42</value>
+  </data>
+  <data name="howtousebtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 0</value>
+  </data>
+  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label1.Name" xml:space="preserve">
+    <value>stremer_name_label1</value>
+  </data>
+  <data name="button6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>굴림, 20pt, style=Bold</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>448, 0</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 20</value>
+  </data>
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="stremer_name_label1.Text" xml:space="preserve">
+    <value>스트리머 이름</value>
+  </data>
+  <data name="opensetting.Location" type="System.Drawing.Point, System.Drawing">
+    <value>357, 0</value>
+  </data>
+  <data name="&gt;&gt;form_panel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 31</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;stremer_name_label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="back_ground_pannel2.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;channle_image_panel2.Name" xml:space="preserve">
+    <value>channle_image_panel2</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>굴림, 20pt</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;no_open_live.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;no_open_live.Name" xml:space="preserve">
+    <value>no_open_live</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel2.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;streming_title_label1.Name" xml:space="preserve">
+    <value>streming_title_label1</value>
+  </data>
+  <data name="&gt;&gt;back_ground_pannel3.Name" xml:space="preserve">
+    <value>back_ground_pannel3</value>
+  </data>
+  <data name="streming_title_label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>CookieRun Bold, 23pt</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>ko-KR</value>
+  </metadata>
   <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
